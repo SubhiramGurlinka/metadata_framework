@@ -1,0 +1,45 @@
+{
+  "vendors": {
+    "ibm": {
+      "display_name": "IBM",
+      "default_parser_type": "IBMTableParser",
+      "software": {
+        "mq": {
+          "id": "mq",
+          "display_name": "IBM MQ",
+          "parser_type": "IBM_mq_fixpack_parser",
+          "supported_versions": ["9.1", "9.2", "9.3"],
+          "base_urls": {
+            "9.1": "https://www.ibm.com/support/pages/fix-list-ibm-mq-version-91-lts",
+            "9.2": "https://www.ibm.com/support/pages/fix-list-ibm-mq-version-92-lts",
+            "9.3": "https://www.ibm.com/support/pages/fix-list-ibm-mq-version-93-lts"
+          }
+        },
+        "websphere": {
+          "id": "websphere",
+          "display_name": "IBM WebSphere Application Server",
+          "parser_type": "IBM_websphere_fixpack_parser",
+          "supported_versions": ["8.5.5", "9.0.5"],
+          "base_urls": {
+            "8.5.5": "https://www.ibm.com/support/pages/fix-list-ibm-websphere-application-server-v85",
+            "9.0.5": "https://www.ibm.com/support/pages/fix-list-ibm-websphere-application-server-traditional-v9-0"
+          }
+        }
+      }
+    },
+    "redhat": {
+      "display_name": "Red Hat",
+      "default_parser_type": "RedHatUnifiedParser",
+      "software": {
+        "jboss": {
+          "id": "jboss",
+          "display_name": "JBoss Enterprise Application Platform",
+          "supported_versions": ["7.3", "7.4", "8.0"],
+          "base_urls": {
+            "all": "https://access.redhat.com/errata-search/"
+          }
+        }
+      }
+    }
+  }
+}
