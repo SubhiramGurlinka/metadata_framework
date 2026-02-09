@@ -40,6 +40,23 @@
           }
         }
       }
+    },
+    "apache": {
+      "display_name": "Apache",
+      "default_parser_type": "ApacheUnifiedParser",
+      "software": {
+        "tomcat": {
+          "id": "tomcat",
+          "display_name": "Apache Tomcat",
+          "parser_type": "Apache_tomcat_parser",
+          "supported_versions": ["9.0", "10.0", "11.0"],
+          "base_urls": {
+            "9.0": "https://tomcat.apache.org/security-9.html",
+            "10.0": "https://tomcat.apache.org/security-10.html",
+            "11.0": "https://tomcat.apache.org/security-11.html"
+          }
+        }
+      }
     }
   }
 }

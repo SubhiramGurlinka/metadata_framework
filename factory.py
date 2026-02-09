@@ -1,18 +1,23 @@
+from strategies.vendor.apache import ApacheVendorStrategy
 from strategies.vendor.ibm import IBMVendorStrategy
 # from strategies.vendor.redhat import RedHatVendorStrategy
 from strategies.parsers.ibm_mq_parsers import IBMMQTableParser
+from strategies.parsers.ibm_websphere_parser import IBMWebSphereTableParser
+from strategies.parsers.apache_tomcat_parser import ApacheTomcatParser
 # from strategies.parsers.redhat_parsers import RedHatUnifiedParser
 from registry import PRODUCT_REGISTRY
 
 class StrategyFactory:
     _PARSERS = {
         "IBM_mq_fixpack_parser": IBMMQTableParser, # Mapping specific IDs to classes
-        #"IBM_websphere_fixpack_parser": IBMTableParser,
+        "IBM_websphere_fixpack_parser": IBMWebSphereTableParser,
+        "Apache_tomcat_parser": ApacheTomcatParser,
         # "RedHatUnifiedParser": RedHatUnifiedParser
     }
 
     _VENDORS = {
         "ibm": IBMVendorStrategy,
+        "apache": ApacheVendorStrategy,
         # "redhat": RedHatVendorStrategy
     }
 
