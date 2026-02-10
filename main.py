@@ -5,21 +5,6 @@ from factory import StrategyFactory
 from models import Vulnerability
 from typing import List
 
-# def run_pipeline(product: str, base_version: str, fix_version: str):
-#     """
-#     Orchestrates the scraping workflow for a specific product.
-#     """
-#     try:
-#         print(f"[*] Initializing pipeline for {product} (Base: {base_version}, Fix: {fix_version})...")
-        
-#         # 1. Get the appropriate Strategy from the Factory
-#         strategy = StrategyFactory.get_strategy(product)
-#         print("The stratergy is ", strategy)
-#         # 2. Get the target URL for this specific version
-#         url = StrategyFactory.get_urls(product, base_version)
-        
-#         print(f"[*] Fetching data from: {url}")
-
 def run_pipeline(vendor: str, product: str, base_version: str, fix_version: str):
     try:
         # Pass both vendor and product to factory
@@ -34,16 +19,7 @@ def run_pipeline(vendor: str, product: str, base_version: str, fix_version: str)
             fix_version=args.fix_version
         )
         print(results)
-        
-        # Filter for the specific fix version if requested
-        # This assumes your scrapers return all vulnerabilities for that base version
-        # filtered_results = [
-        #     v for v in results if v.product_fix_version == fix_version
-        # ]
-        # print(f"[+] Successfully found {len(filtered_results)} entries.")
-        # for vuln in filtered_results:
-        #     print(f" - {vuln.cve_id}: {vuln.severity} (Source: {vuln.source_id})")
-
+    
     except ValueError as ve:
         print(f"[!] Configuration Error: {ve}")
         sys.exit(1)
