@@ -1,0 +1,42 @@
+from models import Vulnerability
+from utils.get_soup import get_soup
+from utils.cvss_mapping import cvss_to_severity
+from strategies.base import PageParser
+
+class < Name >Parser(PageParser):
+
+    def parse(self, cpu_url, context):
+        try:
+            cpu_soup = get_soup(cpu_url, "html.parser")
+            if isinstance(cpu_soup, Exception): raise cpu_soup
+
+            product_name = context["product"].lower()
+            base_version = str(context["base_version"])
+            release_date = context["release_date"]
+
+            all_cves = set()
+            max_cvss = 0.0
+            max_severity = "Unknown"
+
+
+            """ Core Logic goes here"""
+            
+            
+            if max_cvss:
+                max_severity = cvss_to_severity(max_cvss, 3.1)
+             
+            # 4. Return the Vulnerability object
+            return [Vulnerability(
+                cve_id=sorted(list(all_cves)),
+                severity=max_severity,
+                vendor="",
+                product=context.get("product", <default_value_if_needed>),
+                product_base_version=context.get("base_version"),
+                product_fix_version=context.get("product_fix_version"),
+                source_id=context.get("source_id"),
+                published_date=release_date if release_date else None
+            )]
+
+        except Exception as e:
+            print(e)
+            return []
