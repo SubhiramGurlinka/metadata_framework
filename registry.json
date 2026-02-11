@@ -30,13 +30,17 @@
     "redhat": {
       "display_name": "Red Hat",
       "default_parser_type": "RedHatUnifiedParser",
+      "search_url": "https://access.redhat.com/hydra/rest/search/kcs",
+      "cve_api_url": "https://access.redhat.com/hydra/rest/securitydata/cve.json",
       "software": {
         "jboss": {
           "id": "jboss",
           "display_name": "JBoss Enterprise Application Platform",
           "supported_versions": ["7.3", "7.4", "8.0"],
           "base_urls": {
-            "all": "https://access.redhat.com/errata-search/"
+            "7.3": "https://access.redhat.com/hydra/rest/search/kcs",
+            "7.4": "https://access.redhat.com/hydra/rest/search/kcs",
+            "8.0": "https://access.redhat.com/hydra/rest/search/kcs"
           }
         }
       }

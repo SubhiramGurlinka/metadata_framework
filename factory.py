@@ -1,10 +1,10 @@
 from strategies.vendor.apache import ApacheVendorStrategy
 from strategies.vendor.ibm import IBMVendorStrategy
-# from strategies.vendor.redhat import RedHatVendorStrategy
+from strategies.vendor.redhat import RedHatVendorStrategy
 from strategies.parsers.ibm_mq_parsers import IBMMQTableParser
 from strategies.parsers.ibm_websphere_parser import IBMWebSphereTableParser
 from strategies.parsers.apache_tomcat_parser import ApacheTomcatParser
-# from strategies.parsers.redhat_parsers import RedHatUnifiedParser
+from strategies.parsers.redhat_parser import RedHatUnifiedParser
 from registry import PRODUCT_REGISTRY
 
 class StrategyFactory:
@@ -12,13 +12,13 @@ class StrategyFactory:
         "IBM_mq_fixpack_parser": IBMMQTableParser, # Mapping specific IDs to classes
         "IBM_websphere_fixpack_parser": IBMWebSphereTableParser,
         "Apache_tomcat_parser": ApacheTomcatParser,
-        # "RedHatUnifiedParser": RedHatUnifiedParser
+        "RedHatUnifiedParser": RedHatUnifiedParser
     }
 
     _VENDORS = {
         "ibm": IBMVendorStrategy,
         "apache": ApacheVendorStrategy,
-        # "redhat": RedHatVendorStrategy
+        "redhat": RedHatVendorStrategy
     }
 
     @classmethod
@@ -40,7 +40,8 @@ class StrategyFactory:
             )
 
         parser_key = software_cfg.get("parser_type") or vendor_cfg.get("default_parser_type")
-        return cls._VENDORS[vendor_name.lower()](parser=cls._PARSERS[parser_key]())
+        # return cls._VENDORS[vendor_name.lower()](parser=cls._PARSERS[parser_key]())
+        return cls._VENDORS[vendor_name.lower()](parser=cls._PARSERS[parser_key](), software_cfg=software_cfg, vendor_cfg=vendor_cfg)
 
     @classmethod
     def get_url(cls, vendor_name: str, product_name: str, base_version: str) -> str:
