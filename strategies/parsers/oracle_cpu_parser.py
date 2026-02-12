@@ -79,7 +79,7 @@ class OracleCpuParser(PageParser):
                 cve_id=sorted(list(all_cves)),
                 severity=max_severity,
                 vendor="Oracle",
-                product=context.get("product", "MySQL Server"),
+                product=context.get("sw_display_name", product_name),
                 product_base_version=context.get("base_version"),
                 product_fix_version=context.get("product_fix_version"),
                 source_id=context.get("source_id"),

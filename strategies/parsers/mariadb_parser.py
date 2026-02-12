@@ -43,7 +43,7 @@ class MariaDbParser(PageParser):
                 cve_id=sorted(list(all_cves)),
                 severity=max_severity,
                 vendor="MariaDB",
-                product=context.get("product", "MariaDB"),
+                product=context.get("sw_display_name", "MariaDB"),
                 product_base_version=context.get("base_version"),
                 product_fix_version=context.get("product_fix_version"),
                 source_id=context.get("product_fix_version"),

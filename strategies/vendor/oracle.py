@@ -46,13 +46,13 @@ class OracleVendorStrategy(VendorStrategy):
         url, source_id = self.latest_cpu_url(base_url)
         release_date = self.get_release_date(url)
         
-        # print(url, source_id, release_date)
         context = {
-            "product": product,
-            "base_version": base_version,
-            "product_fix_version": fix_version,
             "url": url,
+            "product": product,
             "source_id": source_id,
-            "release_date": release_date
+            "base_version": base_version,
+            "release_date": release_date,
+            "product_fix_version": fix_version,
+            "sw_display_name": self.software_cfg.get("display_name")
         }
         return self.parser.parse(url, context)

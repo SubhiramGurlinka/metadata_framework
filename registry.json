@@ -61,6 +61,64 @@
           }
         }
       }
+    },
+    "oracle": {
+      "display_name": "Oracle",
+      "default_parser_type": "OracleCpuParser",
+      "software": {
+        "mysql server": {
+          "id": "mysql",
+          "display_name": "MySQL Server",
+          "parser_type": "Oracle_cpu_parser",
+          "supported_versions": ["8.0", "8.4", "9"],
+          "base_urls": {
+            "all": "https://www.oracle.com/security-alerts/"
+          }
+        },
+        "oracle weblogic server": {
+          "id": "weblogic",
+          "display_name": "Oracle Weblogic Server",
+          "parser_type": "Oracle_cpu_parser",
+          "supported_versions": ["12.2.1.4", "14.1.1.0"],
+          "base_urls": {
+            "all": "https://www.oracle.com/security-alerts/"
+          }
+        },
+        "oracle java se": {
+          "id": "jdk-jre",
+          "display_name": "Oracle Java SE",
+          "parser_type": "Oracle_cpu_parser",
+          "supported_versions": ["8u", "11.0", "17.0", "21.0", "25.0"],
+          "base_urls": {
+            "all": "https://www.oracle.com/security-alerts/"
+          }
+        },
+        "oracle database server": {
+          "id": "oracledb",
+          "display_name": "Oracle Database Server",
+          "parser_type": "Oracle_cpu_parser",
+          "supported_versions": ["19", "21", "23"],
+          "base_urls": {
+            "all": "https://www.oracle.com/security-alerts/"
+          }
+        }
+      }
+    },
+    "mariadb": {
+      "display_name": "MariaDB",
+      "default_parser_type": "MariaParser",
+      "software": {
+        "mariadb": {
+          "id": "mariadb",
+          "display_name": "MariaDB",
+          "parser_type": "Mariadb_parser",
+          "supported_versions": ["10.11", "11.4", "11.8"],
+          "base_date_url": "https://downloads.mariadb.org/rest-api/mariadb/",
+          "base_urls": {
+            "all": "https://mariadb.com/docs/server/security/securing-mariadb/security.md"
+          }
+        }
+      }
     }
   }
 }

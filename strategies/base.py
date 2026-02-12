@@ -44,7 +44,12 @@ class VendorStrategy(ABC):
         """Dynamic lookup for any field in the registry for this vendor."""
         return self.vendor_cfg.get(key, default)
 
-    @abstractmethod
+    def get_url(self, base_version: str) -> str:
+        if base_url := self.software_cfg['base_urls'].get(base_version):
+            return base_url
+        return self.software_cfg['base_urls'].get("all")
+
+    # @abstractmethod
     def get_urls(self, product: str, base_version: str) -> List[str]:
         """Determines the correct URLs to scrape based on registry/logic."""
         pass
