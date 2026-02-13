@@ -5,11 +5,6 @@ from typing import List
 from strategies.base import VendorStrategy
 
 class RedHatVendorStrategy(VendorStrategy):
-    
-    def get_urls(self, base_version: str) -> List[str]:
-        # Red Hat uses a search endpoint rather than static URLs per version
-        return [self.get_config("search_url", "https://access.redhat.com/hydra/rest/search/kcs")]
-
     def _get_cve_details(self, rhsa_id: str) -> List[dict]:
         cve_api = self.get_config("cve_api_url", "https://access.redhat.com/hydra/rest/securitydata/cve.json")
         r = requests.get(cve_api, params={"advisory": rhsa_id}, timeout=30)
@@ -17,7 +12,7 @@ class RedHatVendorStrategy(VendorStrategy):
         return [{"cve": item["CVE"], "severity": item["severity"]} for item in r.json()]
 
     def process(self, product: str, base_version: str, fix_version: str):
-        search_url = self.get_urls(base_version)[0]
+        search_url = self.get_config("search_url")
         display_name = self.get_config("display_name", product)
         
         # Build filter: portal_product_filter:JBoss\ Enterprise\ Application\ Platform|*|7.4|*

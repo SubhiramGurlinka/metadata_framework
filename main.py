@@ -9,7 +9,7 @@ def run_pipeline(vendor: str, product: str, base_version: str, fix_version: str)
     try:
         # Pass both vendor and product to factory
         strategy = StrategyFactory.get_strategy(vendor, product, base_version)
-        url = StrategyFactory.get_url(vendor, product, base_version)
+        url = strategy.get_url(base_version)
         
         print(f"[*] Scraping {vendor} {product} via {url}...")
 

@@ -35,19 +35,11 @@ class VendorStrategy(ABC):
         
         # 3. Return the hardcoded default if neither exists
         return default
-    
-    def get_registry_value_from_software_cfg(self, key: str, default=None):
-        """Dynamic lookup for any field in the registry for this product."""
-        return self.software_cfg.get(key, default)
 
-    def get_registry_value_from_vendor_cfg(self, key: str, default=None):
-        """Dynamic lookup for any field in the registry for this vendor."""
-        return self.vendor_cfg.get(key, default)
-
-    @abstractmethod
-    def get_urls(self, product: str, base_version: str) -> List[str]:
-        """Determines the correct URLs to scrape based on registry/logic."""
-        pass
+    def get_url(self, base_version: str) -> str:
+        if base_url := self.software_cfg['base_urls'].get(base_version):
+            return base_url
+        return self.software_cfg['base_urls'].get("all")
 
     @abstractmethod
     def process(self, product: str, base_version: str) -> List[Vulnerability]:
