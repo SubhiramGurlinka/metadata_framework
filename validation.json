@@ -1,0 +1,121 @@
+{
+    "mariadb": {
+        "mariadb": {
+            "10.11": {
+                "max_severity": "High",
+                "source_id": "10.11.15",
+                "published_date": "2025-11-07",
+                "product_fix_version": "10.11.15",
+                "cve_id": ["CVE-2026-21968","CVE-2025-13699"]
+            },
+            "11.4": {
+                "max_severity": "High",
+                "source_id": "11.4.9",
+                "published_date": "2025-11-07",
+                "product_fix_version": "11.4.9",
+                "cve_id": ["CVE-2026-21968","CVE-2025-13699"]
+            }
+        }
+    },
+    "oracle": {
+        "mysql server": {
+            "8.0": {
+                "max_severity": "",
+                "source_id": "",
+                "published_date": "",
+                "product_fix_version": "",
+                "cve_id": []
+            },
+            "8.4": {
+                "max_severity": "",
+                "source_id": "",
+                "published_date": "",
+                "product_fix_version": "",
+                "cve_id": []
+            },
+            "9": {
+                "max_severity": "",
+                "source_id": "",
+                "published_date": "",
+                "product_fix_version": "",
+                "cve_id": []
+            }
+        },
+        "oracle weblogic server": {
+            "12.2.1.4": {
+                "max_severity": "",
+                "source_id": "",
+                "published_date": "",
+                "product_fix_version": "",
+                "cve_id": []
+            },
+            "14.1.1.0": {
+                "max_severity": "",
+                "source_id": "",
+                "published_date": "",
+                "product_fix_version": "",
+                "cve_id": []
+            }
+        },
+        "oracle java se": {
+            "8u": {
+                "max_severity": "",
+                "source_id": "",
+                "published_date": "",
+                "product_fix_version": "",
+                "cve_id": []
+            },
+            "11.0": {
+                "max_severity": "",
+                "source_id": "",
+                "published_date": "",
+                "product_fix_version": "",
+                "cve_id": []
+            },
+            "17.0": {
+                "max_severity": "",
+                "source_id": "",
+                "published_date": "",
+                "product_fix_version": "",
+                "cve_id": []
+            },
+            "21.0": {
+                "max_severity": "",
+                "source_id": "",
+                "published_date": "",
+                "product_fix_version": "",
+                "cve_id": []
+            },
+            "25.0": {
+                "max_severity": "",
+                "source_id": "",
+                "published_date": "",
+                "product_fix_version": "",
+                "cve_id": []
+            }
+        },
+        "oracle database server": {
+            "19": {
+                "max_severity": "",
+                "source_id": "",
+                "published_date": "",
+                "product_fix_version": "",
+                "cve_id": []
+            },
+            "21": {
+                "max_severity": "",
+                "source_id": "",
+                "published_date": "",
+                "product_fix_version": "",
+                "cve_id": []
+            },
+            "23": {
+                "max_severity": "",
+                "source_id": "",
+                "published_date": "",
+                "product_fix_version": "",
+                "cve_id": []
+            }
+        }
+    }
+}

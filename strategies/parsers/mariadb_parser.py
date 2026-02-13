@@ -2,7 +2,6 @@ import re
 from models import Vulnerability
 from utils.get_response import get_response_text
 from utils.severity_rank import severity_rank
-from utils.get_response import get_response_text
 from strategies.base import PageParser
 
 class MariaDbParser(PageParser):
@@ -11,7 +10,7 @@ class MariaDbParser(PageParser):
         match = re.search(r'"baseSeverity":\s*"([^"]+)"', cve_page_text)
         if match:
             return match.group(1).title()
-        return "Unknown"
+        return "None"
 
     def parse(self, url, context):
         try:
@@ -19,7 +18,7 @@ class MariaDbParser(PageParser):
             fix_version = context["product_fix_version"]
 
             all_cves = set()
-            max_severity = "Unknown"
+            max_severity = "None"
             text = get_response_text(url)
             # Regex to capture CVE ID and link
             cve_pattern = re.compile(r"\[?(CVE-\d{4}-\d+)\]?\((https?://[^\)]+)\)")
@@ -36,7 +35,6 @@ class MariaDbParser(PageParser):
                         severity = self.get_severity(cve_link)
                         if severity_rank(severity) > severity_rank(max_severity):
                             max_severity = severity
-
             
             # 4. Return the Vulnerability object
             return [Vulnerability(

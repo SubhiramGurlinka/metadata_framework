@@ -50,21 +50,3 @@ class StrategyFactory:
         parser_key = software_cfg.get("parser_type") or vendor_cfg.get("default_parser_type")
         # return cls._VENDORS[vendor_name.lower()](parser=cls._PARSERS[parser_key]())
         return cls._VENDORS[vendor_name.lower()](parser=cls._PARSERS[parser_key](), software_cfg=software_cfg, vendor_cfg=vendor_cfg)
-
-    @classmethod
-    def get_url(cls, vendor_name: str, product_name: str, base_version: str) -> str:
-        # Assumes validation was already done by get_strategy
-        software_cfg = PRODUCT_REGISTRY['vendors'][vendor_name]['software'][product_name]
-        
-        if base_url := software_cfg['base_urls'].get(base_version):
-            return base_url
-        return software_cfg['base_urls'].get("all")
-    
-    @classmethod
-    def get_date_url(cls, vendor_name: str, product_name: str, base_version: str) -> str:
-        # Assumes validation was already done by get_strategy
-        software_cfg = PRODUCT_REGISTRY['vendors'][vendor_name]['software'][product_name]
-        
-        if date_url := software_cfg['date_urls'].get(base_version): 
-            return date_url
-        return software_cfg['date_urls'].get("all")
