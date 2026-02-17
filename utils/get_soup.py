@@ -8,4 +8,5 @@ def get_soup(url :str, parser: str):
         return BeautifulSoup(response.content, parser)
 
     except Exception as e:
-        return e
+        print(e)
+        return None

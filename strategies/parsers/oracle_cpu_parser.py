@@ -68,7 +68,7 @@ class OracleCpuParser(PageParser):
                                     max_cvss = current_cvss
              
             # 4. Return the Vulnerability object
-            return [Vulnerability(
+            return Vulnerability(
                 vendor="Oracle",
                 cve_id=sorted(list(all_cves)),
                 source_id=context.get("source_id"),
@@ -77,7 +77,7 @@ class OracleCpuParser(PageParser):
                 product=context.get("sw_display_name", product_name),
                 product_fix_version=context.get("product_fix_version"),
                 published_date=release_date if release_date else None
-            )]
+            )
 
         except Exception as e:
             print(e)

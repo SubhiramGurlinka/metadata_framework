@@ -1,3 +1,5 @@
+# mariadb_parser.py
+
 import re
 from models import Vulnerability
 from utils.get_response import get_response_text
@@ -37,7 +39,7 @@ class MariaDbParser(PageParser):
                             max_severity = severity
             
             # 4. Return the Vulnerability object
-            return [Vulnerability(
+            return Vulnerability(
                 cve_id=sorted(list(all_cves)),
                 severity=max_severity,
                 vendor="MariaDB",
@@ -46,7 +48,7 @@ class MariaDbParser(PageParser):
                 product_fix_version=context.get("product_fix_version"),
                 source_id=context.get("product_fix_version"),
                 published_date=release_date if release_date else None
-            )]
+            )
 
         except Exception as e:
             print(e)

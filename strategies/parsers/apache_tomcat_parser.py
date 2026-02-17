@@ -77,7 +77,7 @@ class ApacheTomcatParser(PageParser):
         if not all_cves:
             return []
 
-        return [Vulnerability(
+        return Vulnerability(
             cve_id=sorted(list(all_cves)),
             severity=max_severity,
             vendor="Apache",
@@ -86,4 +86,4 @@ class ApacheTomcatParser(PageParser):
             product_fix_version=fix_version,
             source_id=fix_version,
             published_date=normalize_date_to_iso(release_date) if release_date else None
-        )]
+        )
