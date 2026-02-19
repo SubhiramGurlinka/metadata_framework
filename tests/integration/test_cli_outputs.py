@@ -13,7 +13,6 @@ def load_expected():
     with open(EXPECTED_JSON, "r", encoding="utf-8") as f:
         return json.load(f)
 
-
 def run_cli(vendor, product, base_version, fix_version):
     result = subprocess.run(
         [

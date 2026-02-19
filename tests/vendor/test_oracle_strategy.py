@@ -1,3 +1,5 @@
+# test_oracle_strategy.py
+
 import pytest
 from unittest.mock import Mock, patch
 from bs4 import BeautifulSoup
@@ -253,20 +255,15 @@ def test_get_release_date_raises_when_last_tbody_has_no_rows(mock_get_soup):
 
 
 # ==========================================================
-# process()
+#                   process()
 # ==========================================================
 
-import pytest
-from unittest.mock import Mock
 from models import Vulnerability
-from strategies.vendor.oracle import OracleVendorStrategy
 
-
-# ==========================================================
 # SUCCESS: process returns parser result and builds context
-# ==========================================================
+
 def test_process_success_returns_parser_result():
-    # ----------------- Arrange -----------------
+    #  Arrange 
     mock_parser = Mock()
 
     expected_vulnerability = Vulnerability(
@@ -292,10 +289,10 @@ def test_process_success_returns_parser_result():
     strategy.latest_cpu_url = Mock(return_value=("http://cpu-url", "cpujan2026"))
     strategy.get_release_date = Mock(return_value="2026-02-15")
 
-    # ----------------- Act -----------------
+    #  Act 
     result = strategy.process("Oracle DB", "19", "19.11")
 
-    # ----------------- Assert -----------------
+    #  Assert 
     assert result == expected_vulnerability
 
     strategy.get_url.assert_called_once_with("19")
@@ -317,10 +314,8 @@ def test_process_success_returns_parser_result():
         "sw_display_name": "Oracle DB"
     }
 
-
-# ==========================================================
 # FAILURE: get_url raises exception
-# ==========================================================
+
 def test_process_raises_if_get_url_fails():
     mock_parser = Mock()
 
@@ -338,9 +333,8 @@ def test_process_raises_if_get_url_fails():
     mock_parser.parse.assert_not_called()
 
 
-# ==========================================================
 # FAILURE: latest_cpu_url raises exception
-# ==========================================================
+
 def test_process_raises_if_latest_cpu_url_fails():
     mock_parser = Mock()
 
@@ -359,9 +353,8 @@ def test_process_raises_if_latest_cpu_url_fails():
     mock_parser.parse.assert_not_called()
 
 
-# ==========================================================
 # FAILURE: get_release_date raises exception
-# ==========================================================
+
 def test_process_raises_if_get_release_date_fails():
     mock_parser = Mock()
 
@@ -379,4 +372,3 @@ def test_process_raises_if_get_release_date_fails():
         strategy.process("Oracle DB", "19c", "19c.1")
 
     mock_parser.parse.assert_not_called()
-

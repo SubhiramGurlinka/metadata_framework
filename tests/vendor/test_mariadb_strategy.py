@@ -1,3 +1,5 @@
+# test_mariadb_strategy.py
+
 """
 Docstring for tests.vendor.test_mariadb_strategy
 
@@ -16,7 +18,6 @@ Then:
 --> Naming: test_<method>_<condition>_<expected_result>
 
 """
-
 import pytest
 from unittest.mock import patch, Mock
 from strategies.vendor.mariadb import MariaDbVendorStrategy

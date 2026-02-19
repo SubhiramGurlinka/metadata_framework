@@ -1,3 +1,5 @@
+# factory.py
+
 from strategies.vendor.apache import ApacheVendorStrategy
 from strategies.vendor.ibm import IBMVendorStrategy
 from strategies.vendor.redhat import RedHatVendorStrategy

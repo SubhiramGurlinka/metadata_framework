@@ -1,3 +1,5 @@
+# oracle.py
+
 from datetime import datetime
 from utils.get_soup import get_soup
 from strategies.base import VendorStrategy
