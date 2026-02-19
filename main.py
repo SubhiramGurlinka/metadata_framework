@@ -5,6 +5,7 @@ import json
 from factory import StrategyFactory
 from models import Vulnerability
 
+
 def verify_result(result: Vulnerability):
     match, error = [], []
     with open("./validation.json", "r") as f:
@@ -30,15 +31,17 @@ def run_pipeline(vendor: str, product: str, base_version: str, fix_version: str)
         strategy = StrategyFactory.get_strategy(vendor, product, base_version)
         url = strategy.get_url(base_version)
         
-        print(f"[*] Scraping {vendor} {product} via {url}...")
+        # print(f"[*] Scraping {vendor} {product} via {url}...")
 
         results = strategy.process(
             product=product, 
             base_version=base_version,
             fix_version=fix_version
         )
-        print([results])
-        verify_result(results)
+
+        # if results:
+        #     verify_result(results)
+        print(results.model_dump_json(indent=4))
 
     except ValueError as ve:
         print(f"[!] Configuration Error: {ve}")

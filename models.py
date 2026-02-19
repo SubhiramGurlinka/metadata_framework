@@ -1,9 +1,14 @@
-from pydantic import BaseModel, Field, HttpUrl, field_validator
+from pydantic import BaseModel, Field, ConfigDict, field_validator
 from datetime import datetime
 from typing import List, Optional
 import re
 
 class Vulnerability(BaseModel):
+
+    model_config = ConfigDict(
+        frozen=True
+    )
+
     cve_id: List[str] = Field(..., description="List of CVE identifiers")
     severity: str
     published_date: Optional[str] = None
@@ -30,5 +35,12 @@ class Vulnerability(BaseModel):
             raise ValueError("published_date is not a valid calendar date")
 
         return v
-    class Config:
-        frozen = True  # Makes instances immutable
+
+    @field_validator("cve_id")
+    @classmethod
+    def validate_cve_format(cls, v):
+        pattern = re.compile(r"CVE-\d{4}-\d{4,7}")
+        for cve in v:
+            if not pattern.fullmatch(cve):
+                raise ValueError(f"Invalid CVE format: {cve}")
+        return v
