@@ -48,7 +48,7 @@ class RedHatUnifiedParser(PageParser):
         if not all_cves:
             return []
 
-        return [Vulnerability(
+        return Vulnerability(
             cve_id=sorted(list(all_cves)),
             severity=highest_sev.capitalize(),
             vendor="Red Hat",
@@ -57,4 +57,4 @@ class RedHatUnifiedParser(PageParser):
             product_fix_version=context.get("product_fix_version"),
             source_id=", ".join(sorted(all_source_ids)),
             published_date=normalize_date_to_iso(earliest_date) if earliest_date else None
-        )]
+        )
