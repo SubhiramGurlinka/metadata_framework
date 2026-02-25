@@ -43,6 +43,7 @@ def run_pipeline(vendor: str, product: str, base_version: str, fix_version: str)
         # if results:
         #     verify_result(results)
         print(results.model_dump_json(indent=4))
+        return results.model_dump()
 
     except ValueError as ve:
         print(f"[!] Configuration Error: {ve}")

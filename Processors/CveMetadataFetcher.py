@@ -61,7 +61,7 @@ class CveMetadataFetcher(Processor):
         base_version = self.env.get("base_version")
         fix_version = self.env.get("fix_version")
 
-        print("calling {vendor} - {product} - {base_version} - {fix_version}")
+        # print("calling {vendor} - {product} - {base_version} - {fix_version}")
         # calling framework here
         result = run_pipeline(
             vendor=vendor,
