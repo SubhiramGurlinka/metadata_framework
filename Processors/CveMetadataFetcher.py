@@ -10,17 +10,17 @@ import sys
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 FRAMEWORK_DIR = os.path.abspath(
-    os.path.join(CURRENT_DIR, "..", "..", "com.github.metadata")
+    os.path.join(CURRENT_DIR, "..")
 )
 
 if FRAMEWORK_DIR not in sys.path:
     sys.path.insert(0, FRAMEWORK_DIR)
 
-from meta.main import run_pipeline
+from main import run_pipeline
 
-__all__ = ["CveMetadata"]
+__all__ = ["CveMetadataFetcher"]
 
-class CveMetadata(Processor):
+class CveMetadataFetcher(Processor):
     description = "Process cve metadata framework & adds to template dictionary."
 
     input_variables = {
@@ -82,5 +82,5 @@ class CveMetadata(Processor):
         self.env["dictionary_appended"] = dictionary_to_append
 
 if __name__ == "__main__":
-    PROCESSOR = CveMetadata()
+    PROCESSOR = CveMetadataFetcher()
     PROCESSOR.execute_shell()
