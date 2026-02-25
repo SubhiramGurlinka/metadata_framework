@@ -119,6 +119,22 @@
           }
         }
       }
+    },
+    "mongodb": {
+      "display_name": "MongoDB",
+      "default_parser_type": "MongoParser",
+      "software": {
+        "mariadb": {
+          "id": "mongodb",
+          "display_name": "MongoDB",
+          "parser_type": "Mongodb_parser",
+          "supported_versions": ["10.11", "11.4", "11.8"],
+          "base_date_url": "https://downloads.mariadb.org/rest-api/mariadb/",
+          "base_urls": {
+            "all": "https://mariadb.com/docs/server/security/cve/community-server.md"
+          }
+        }
+      }
     }
   }
 }
