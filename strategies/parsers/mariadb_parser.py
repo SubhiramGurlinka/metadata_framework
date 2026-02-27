@@ -37,7 +37,11 @@ class MariaDbParser(PageParser):
                         severity = self.get_severity(cve_link)
                         if severity_rank(severity) > severity_rank(max_severity):
                             max_severity = severity
-            
+
+            # For IVR team's comfort
+            if not all_cves:
+                max_severity = ""
+
             # 4. Return the Vulnerability object
             return Vulnerability(
                 cve_id=sorted(list(all_cves)),

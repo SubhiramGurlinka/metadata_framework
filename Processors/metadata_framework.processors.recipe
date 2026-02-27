@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Identifier</key>
-    <string>com.github.SubhiramGurlinka.metadata_framework</string>
+    <string>com.github.middleware.metadata_framework</string>
     <key>Description</key>
     <string>Stub recipe to expose processors in this repo</string>
     <key>Input</key>

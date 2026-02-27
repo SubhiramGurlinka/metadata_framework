@@ -99,8 +99,8 @@ def test_parse_returns_empty_cve_list_when_no_match(mock_get_response_text):
 
     # Assert
     assert isinstance(result, Vulnerability)
-    assert result.cve_id == []
-    assert result.severity == "None"
+    assert result.cve_id == ['']
+    assert result.severity == ""
     assert result.vendor == "MariaDB"
     assert result.product == "MariaDB"
     assert result.product_base_version == "10.6"

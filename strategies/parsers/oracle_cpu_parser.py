@@ -97,13 +97,18 @@ class OracleCpuParser(PageParser):
                                 current_cvss = float(row_data[4])
                                 if current_cvss > max_cvss:
                                     max_cvss = current_cvss
-             
+            
+            # For IVR team's comfort
+            max_severity = cvss_to_severity(max_cvss, 3.1)
+            if not all_cves:
+                max_severity = ""
+
             # 4. Return the Vulnerability object
             return Vulnerability(
                 vendor="Oracle",
                 cve_id=sorted(list(all_cves)),
                 source_id=context.get("source_id"),
-                severity=cvss_to_severity(max_cvss, 3.1),
+                severity=max_severity,
                 product_base_version=context.get("base_version"),
                 product=context.get("sw_display_name", product_name),
                 product_fix_version=context.get("product_fix_version"),
