@@ -3,8 +3,7 @@
 import json
 import os
 import tempfile
-from typing import Dict, Any, Optional, List
-from packaging.version import Version
+from typing import Dict, Any
 
 from state_manager.models import StateVulnerability
 

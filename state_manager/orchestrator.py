@@ -1,6 +1,9 @@
 # state_manager/orchestrator.py
 
+import sys
 import json
+import logging
+import argparse
 import subprocess
 from typing import Dict, Any, List
 
@@ -73,14 +76,10 @@ class FrameworkOrchestrator:
         cmd = [
             self.python_exec,
             self.framework_path,
-            "--vendor",
-            vendor,
-            "--product",
-            product,
-            "--base-version",
-            base_version,
-            "--fix-version",
-            fix_version,
+            "--vendor", vendor,
+            "--product", product,
+            "--base-version", base_version,
+            "--fix-version", fix_version,
         ]
 
         result = subprocess.run(
@@ -96,13 +95,12 @@ class FrameworkOrchestrator:
                 Framework execution failed
                 Command: {' '.join(cmd)}
                 Return code: {result.returncode}
-                STDOUT:
+                STDOUT: 
                 {result.stdout}
-
-                STDERR:
+                STDERR: 
                 {result.stderr}
                 """.strip()
-                        )
+            )
 
         try:
             return json.loads(result.stdout)
@@ -115,61 +113,7 @@ class FrameworkOrchestrator:
                 STDERR:
                 {result.stderr}
                 """.strip()
-                        ) from e
-
-    # def _execute_framework(
-    #     self,
-    #     vendor: str,
-    #     product: str,
-    #     base_version: str,
-    #     fix_version: str,
-    # ) -> Dict[str, Any]:
-
-    #     cmd = [
-    #         self.python_exec,
-    #         self.framework_path,
-    #         "--vendor",
-    #         vendor,
-    #         "--product",
-    #         product,
-    #         "--base-version",
-    #         base_version,
-    #         "--fix-version",
-    #         fix_version,
-    #     ]
-
-    #     try:
-    #         result = subprocess.run(
-    #             cmd,
-    #             capture_output=True,
-    #             text=True,
-    #             timeout=self.timeout,
-    #             check=True,
-    #         )
-    #     except subprocess.TimeoutExpired as e:
-    #         raise FrameworkExecutionError(
-    #             f"Framework timeout for {vendor}/{product}/{base_version}/{fix_version}"
-    #         ) from e
-    #     except subprocess.CalledProcessError as e:
-    #         raise FrameworkExecutionError(
-    #             f"Framework failed: {e.stderr}"
-    #         ) from e
-
-    #     try:
-    #         return json.loads(result.stdout)
-    #     except json.JSONDecodeError as e:
-    #         raise FrameworkExecutionError(
-    #             "Framework returned invalid JSON"
-    #         ) from e
-        
-# ==========================================
-# CLI ENTRYPOINT
-# ==========================================
-
-import argparse
-import logging
-import sys
-
+            ) from e
 
 def main():
     parser = argparse.ArgumentParser(

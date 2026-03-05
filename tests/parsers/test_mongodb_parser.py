@@ -23,10 +23,10 @@ def test_parse_extracts_cves_and_returns_vulnerability(
     html = """
     <html>
         <body>
-            <h2>MongoDB 6.0.1 Jan 10, 2024</h2>
+            <h3>8.0.19 - Feb 10, 2026</h3>
             <p>
-                <a href="#">CVE-2024-1111</a>
-                <a href="#">CVE-2024-2222</a>
+                <a href="#">CVE-2026-1111</a>
+                <a href="#">CVE-2026-2222</a>
             </p>
         </body>
     </html>
@@ -38,13 +38,13 @@ def test_parse_extracts_cves_and_returns_vulnerability(
     mock_service_instance = mock_severity_service.return_value
     mock_service_instance.get_multiple_severities = AsyncMock(
         return_value={
-            "CVE-2024-1111": "LOW",
-            "CVE-2024-2222": "CRITICAL",
+            "CVE-2026-1111": "LOW",
+            "CVE-2026-2222": "CRITICAL",
         }
     )
 
     mock_severity_rank.side_effect = lambda x: {
-        "": 0,
+        "None": 0,
         "LOW": 1,
         "MEDIUM": 2,
         "HIGH": 3,
@@ -54,21 +54,21 @@ def test_parse_extracts_cves_and_returns_vulnerability(
     parser = MongoDbParser()
 
     context = {
-        "product_fix_version": "6.0.1",
-        "base_version": "6.0",
+        "product_fix_version": "8.0.19",
+        "base_version": "8.0",
         "sw_display_name": "MongoDB"
     }
 
     result = parser.parse("http://fake-url", context)
 
     assert isinstance(result, Vulnerability)
-    assert result.cve_id == ["CVE-2024-1111", "CVE-2024-2222"]
+    assert result.cve_id == ["CVE-2026-1111", "CVE-2026-2222"]
     assert result.severity == "CRITICAL"
     assert result.vendor == "MongoDB"
     assert result.product == "MongoDB"
-    assert result.product_base_version == "6.0"
-    assert result.product_fix_version == "6.0.1"
-    assert result.published_date == "2024-01-10"
+    assert result.product_base_version == "8.0"
+    assert result.product_fix_version == "8.0.19"
+    assert result.published_date == "2026-02-10"
 
 
 @patch("strategies.parsers.mongodb_parser.severity_rank")
@@ -158,11 +158,8 @@ def test_parse_header_not_found(mock_get_soup):
     mock_get_soup.return_value = BeautifulSoup(html, "html.parser")
 
     parser = MongoDbParser()
-
     context = {"product_fix_version": "6.0.1"}
-
     result = parser.parse("http://fake-url", context)
-
     assert result is None
 
 
@@ -175,13 +172,19 @@ def test_parse_filters_invalid_cve(
 
     html = """
     <html>
-        <body>
-            <h2>MongoDB 6.0.1 Jan 10, 2024</h2>
-            <p>
-                <a href="#">INVALID-CVE</a>
-                <a href="#">CVE-2024-9999</a>
-            </p>
-        </body>
+    <body>
+    <h2>"6.0.1 - Jan 10, 2024"</h2>
+    <div>
+        <div>
+            <a href="#">
+                <span>INVALID-CVE</span>
+            </a>
+            <a href="#">
+                <span>CVE-2024-9999</span>
+            </a>
+        </div>
+    </div>
+    </body>
     </html>
     """
 
@@ -194,7 +197,7 @@ def test_parse_filters_invalid_cve(
     )
 
     mock_severity_rank.side_effect = lambda x: {
-        "": 0,
+        "None": 0,
         "MEDIUM": 2
     }.get(x, 0)
 
@@ -216,9 +219,6 @@ def test_parse_filters_invalid_cve(
 def test_parse_exception_handling(mock_get_soup):
 
     parser = MongoDbParser()
-
     context = {"product_fix_version": "6.0.1"}
-
     result = parser.parse("http://fake-url", context)
-
     assert result is None
