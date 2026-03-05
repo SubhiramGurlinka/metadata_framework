@@ -1,0 +1,512 @@
+{
+    "mariadb": {
+        "mariadb": {
+            "10.11": {
+                "10.11.15": {
+                    "cve_id": [
+                        "CVE-2025-13699",
+                        "CVE-2026-21968"
+                    ],
+                    "severity": "High",
+                    "source_id": "10.11.15",
+                    "published_date": "2025-11-07"
+                }
+            },
+            "11.4": {
+                "11.4.9": {
+                    "cve_id": [
+                        "CVE-2025-13699",
+                        "CVE-2026-21968"
+                    ],
+                    "severity": "High",
+                    "source_id": "11.4.9",
+                    "published_date": "2025-11-07"
+                }
+            },
+            "11.8": {
+                "11.8.5": {
+                    "cve_id": [],
+                    "severity": "",
+                    "source_id": "11.8.5",
+                    "published_date": "2025-11-15"
+                }
+            }
+        }
+    },
+    "oracle": {
+        "mysql server": {
+            "8.0": {
+                "8.0.45": {
+                    "cve_id": [
+                        "CVE-2025-9230",
+                        "CVE-2026-21936",
+                        "CVE-2026-21937",
+                        "CVE-2026-21941",
+                        "CVE-2026-21948",
+                        "CVE-2026-21964",
+                        "CVE-2026-21968"
+                    ],
+                    "severity": "High",
+                    "source_id": "cpujan2026",
+                    "published_date": "2026-01-20"
+                }
+            },
+            "8.4": {
+                "8.4.8": {
+                    "cve_id": [
+                        "CVE-2025-6965",
+                        "CVE-2025-9230",
+                        "CVE-2026-21936",
+                        "CVE-2026-21937",
+                        "CVE-2026-21941",
+                        "CVE-2026-21948",
+                        "CVE-2026-21964",
+                        "CVE-2026-21968"
+                    ],
+                    "severity": "Critical",
+                    "source_id": "cpujan2026",
+                    "published_date": "2026-01-20"
+                }
+            },
+            "9": {
+                "9.6.0": {
+                    "cve_id": [
+                        "CVE-2025-9230",
+                        "CVE-2026-21929",
+                        "CVE-2026-21936",
+                        "CVE-2026-21937",
+                        "CVE-2026-21941",
+                        "CVE-2026-21948",
+                        "CVE-2026-21949",
+                        "CVE-2026-21950",
+                        "CVE-2026-21952",
+                        "CVE-2026-21964",
+                        "CVE-2026-21965",
+                        "CVE-2026-21968"
+                    ],
+                    "severity": "High",
+                    "source_id": "cpujan2026",
+                    "published_date": "2026-01-20"
+                }
+            }
+        },
+        "oracle weblogic server": {
+            "12.2.1.4": {
+                "12.2.1.4.0": {
+                    "cve_id": [
+                        "CVE-2024-47554",
+                        "CVE-2025-41249",
+                        "CVE-2025-48976",
+                        "CVE-2025-53864"
+                    ],
+                    "severity": "High",
+                    "source_id": "cpujan2026",
+                    "published_date": "2026-01-20"
+                }
+            },
+            "14.1.1.0": {
+                "14.1.1.0.0": {
+                    "cve_id": [
+                        "CVE-2024-47554",
+                        "CVE-2025-12383",
+                        "CVE-2025-41249",
+                        "CVE-2025-48976",
+                        "CVE-2025-53864"
+                    ],
+                    "severity": "High",
+                    "source_id": "cpujan2026",
+                    "published_date": "2026-01-20"
+                }
+            }
+        },
+        "oracle java se": {
+            "8u": {
+                "8u481": {
+                    "cve_id": [
+                        "CVE-2026-21925",
+                        "CVE-2026-21932",
+                        "CVE-2026-21933",
+                        "CVE-2026-21945"
+                    ],
+                    "severity": "High",
+                    "source_id": "cpujan2026",
+                    "published_date": "2026-01-20"
+                }
+            },
+            "11.0": {
+                "11.0.30": {
+                    "cve_id": [
+                        "CVE-2026-21925",
+                        "CVE-2026-21932",
+                        "CVE-2026-21933",
+                        "CVE-2026-21945"
+                    ],
+                    "severity": "High",
+                    "source_id": "cpujan2026",
+                    "published_date": "2026-01-20"
+                }
+            },
+            "17.0": {
+                "17.0.18": {
+                    "cve_id": [
+                        "CVE-2026-21925",
+                        "CVE-2026-21932",
+                        "CVE-2026-21933",
+                        "CVE-2026-21945"
+                    ],
+                    "severity": "High",
+                    "source_id": "cpujan2026",
+                    "published_date": "2026-01-20"
+                }
+            },
+            "21.0": {
+                "21.0.10": {
+                    "cve_id": [
+                        "CVE-2026-21925",
+                        "CVE-2026-21932",
+                        "CVE-2026-21933",
+                        "CVE-2026-21945"
+                    ],
+                    "severity": "High",
+                    "source_id": "cpujan2026",
+                    "published_date": "2026-01-20"
+                }
+            },
+            "25.0": {
+                "25.0.2": {
+                    "cve_id": [
+                        "CVE-2026-21925",
+                        "CVE-2026-21932",
+                        "CVE-2026-21933",
+                        "CVE-2026-21945"
+                    ],
+                    "severity": "High",
+                    "source_id": "cpujan2026",
+                    "published_date": "2026-01-20"
+                }
+            }
+        },
+        "oracle database server": {
+            "19": {
+                "19.30": {
+                    "cve_id": [
+                        "CVE-2025-67735",
+                        "CVE-2026-21975"
+                    ],
+                    "severity": "Medium",
+                    "source_id": "cpujan2026",
+                    "published_date": "2026-01-20"
+                }
+            },
+            "21": {
+                "21.21": {
+                    "cve_id": [
+                        "CVE-2025-61755",
+                        "CVE-2025-8194",
+                        "CVE-2026-21975"
+                    ],
+                    "severity": "Medium",
+                    "source_id": "cpujan2026",
+                    "published_date": "2026-01-20"
+                }
+            },
+            "23": {
+                "23.27": {
+                    "cve_id": [
+                        "CVE-2025-12383",
+                        "CVE-2025-54874",
+                        "CVE-2025-61755",
+                        "CVE-2025-67735",
+                        "CVE-2025-8194",
+                        "CVE-2026-21939"
+                    ],
+                    "severity": "High",
+                    "source_id": "cpujan2026",
+                    "published_date": "2026-01-20"
+                }
+            }
+        }
+    },
+    "mongodb": {
+        "mongodb": {
+            "8.0": {
+                "8.0.19": {
+                    "cve_id": [],
+                    "severity": "",
+                    "source_id": "8.0.19",
+                    "published_date": "2026-02-10"
+                },
+                "8.0.18": {
+                    "cve_id": [
+                        "CVE-2026-1847",
+                        "CVE-2026-1848",
+                        "CVE-2026-1849",
+                        "CVE-2026-1850",
+                        "CVE-2026-25609",
+                        "CVE-2026-25611",
+                        "CVE-2026-25612",
+                        "CVE-2026-25613"
+                    ],
+                    "severity": "High",
+                    "source_id": "8.0.18",
+                    "published_date": "2026-01-27"
+                }
+            }
+        }
+    },
+    "MariaDB": {
+        "MariaDB": {
+            "10.11": {
+                "10.11.15": {
+                    "cve_id": [
+                        "CVE-2025-13699",
+                        "CVE-2026-21968"
+                    ],
+                    "severity": "High",
+                    "published_date": "2025-11-07",
+                    "source_id": "10.11.15"
+                }
+            },
+            "11.4": {
+                "11.4.9": {
+                    "cve_id": [
+                        "CVE-2025-13699",
+                        "CVE-2026-21968"
+                    ],
+                    "severity": "High",
+                    "published_date": "2025-11-07",
+                    "source_id": "11.4.9"
+                }
+            },
+            "11.8": {
+                "11.8.5": {
+                    "cve_id": [],
+                    "severity": "",
+                    "published_date": "2025-11-15",
+                    "source_id": "11.8.5"
+                }
+            }
+        }
+    },
+    "Oracle": {
+        "MySQL Server": {
+            "8.0": {
+                "8.0.45": {
+                    "cve_id": [
+                        "CVE-2025-9230",
+                        "CVE-2026-21936",
+                        "CVE-2026-21937",
+                        "CVE-2026-21941",
+                        "CVE-2026-21948",
+                        "CVE-2026-21964",
+                        "CVE-2026-21968"
+                    ],
+                    "severity": "High",
+                    "published_date": "2026-01-20",
+                    "source_id": "cpujan2026"
+                }
+            },
+            "8.4": {
+                "8.4.8": {
+                    "cve_id": [
+                        "CVE-2025-6965",
+                        "CVE-2025-9230",
+                        "CVE-2026-21936",
+                        "CVE-2026-21937",
+                        "CVE-2026-21941",
+                        "CVE-2026-21948",
+                        "CVE-2026-21964",
+                        "CVE-2026-21968"
+                    ],
+                    "severity": "Critical",
+                    "published_date": "2026-01-20",
+                    "source_id": "cpujan2026"
+                }
+            },
+            "9": {
+                "9.6.0": {
+                    "cve_id": [
+                        "CVE-2025-9230",
+                        "CVE-2026-21929",
+                        "CVE-2026-21936",
+                        "CVE-2026-21937",
+                        "CVE-2026-21941",
+                        "CVE-2026-21948",
+                        "CVE-2026-21949",
+                        "CVE-2026-21950",
+                        "CVE-2026-21952",
+                        "CVE-2026-21964",
+                        "CVE-2026-21965",
+                        "CVE-2026-21968"
+                    ],
+                    "severity": "High",
+                    "published_date": "2026-01-20",
+                    "source_id": "cpujan2026"
+                }
+            }
+        },
+        "Oracle Weblogic Server": {
+            "12.2.1.4": {
+                "12.2.1.4.0": {
+                    "cve_id": [
+                        "CVE-2024-47554",
+                        "CVE-2025-41249",
+                        "CVE-2025-48976",
+                        "CVE-2025-53864"
+                    ],
+                    "severity": "High",
+                    "published_date": "2026-01-20",
+                    "source_id": "cpujan2026"
+                }
+            },
+            "14.1.1.0": {
+                "14.1.1.0.0": {
+                    "cve_id": [
+                        "CVE-2024-47554",
+                        "CVE-2025-12383",
+                        "CVE-2025-41249",
+                        "CVE-2025-48976",
+                        "CVE-2025-53864"
+                    ],
+                    "severity": "High",
+                    "published_date": "2026-01-20",
+                    "source_id": "cpujan2026"
+                }
+            }
+        },
+        "Oracle Java SE": {
+            "8u": {
+                "8u481": {
+                    "cve_id": [
+                        "CVE-2026-21925",
+                        "CVE-2026-21932",
+                        "CVE-2026-21933",
+                        "CVE-2026-21945"
+                    ],
+                    "severity": "High",
+                    "published_date": "2026-01-20",
+                    "source_id": "cpujan2026"
+                }
+            },
+            "11.0": {
+                "11.0.30": {
+                    "cve_id": [
+                        "CVE-2026-21925",
+                        "CVE-2026-21932",
+                        "CVE-2026-21933",
+                        "CVE-2026-21945"
+                    ],
+                    "severity": "High",
+                    "published_date": "2026-01-20",
+                    "source_id": "cpujan2026"
+                }
+            },
+            "17.0": {
+                "17.0.18": {
+                    "cve_id": [
+                        "CVE-2026-21925",
+                        "CVE-2026-21932",
+                        "CVE-2026-21933",
+                        "CVE-2026-21945"
+                    ],
+                    "severity": "High",
+                    "published_date": "2026-01-20",
+                    "source_id": "cpujan2026"
+                }
+            },
+            "21.0": {
+                "21.0.10": {
+                    "cve_id": [
+                        "CVE-2026-21925",
+                        "CVE-2026-21932",
+                        "CVE-2026-21933",
+                        "CVE-2026-21945"
+                    ],
+                    "severity": "High",
+                    "published_date": "2026-01-20",
+                    "source_id": "cpujan2026"
+                }
+            },
+            "25.0": {
+                "25.0.2": {
+                    "cve_id": [
+                        "CVE-2026-21925",
+                        "CVE-2026-21932",
+                        "CVE-2026-21933",
+                        "CVE-2026-21945"
+                    ],
+                    "severity": "High",
+                    "published_date": "2026-01-20",
+                    "source_id": "cpujan2026"
+                }
+            }
+        },
+        "Oracle Database Server": {
+            "19": {
+                "19.30": {
+                    "cve_id": [
+                        "CVE-2025-67735",
+                        "CVE-2026-21975"
+                    ],
+                    "severity": "Medium",
+                    "published_date": "2026-01-20",
+                    "source_id": "cpujan2026"
+                }
+            },
+            "21": {
+                "21.21": {
+                    "cve_id": [
+                        "CVE-2025-61755",
+                        "CVE-2025-8194",
+                        "CVE-2026-21975"
+                    ],
+                    "severity": "Medium",
+                    "published_date": "2026-01-20",
+                    "source_id": "cpujan2026"
+                }
+            },
+            "23": {
+                "23.27": {
+                    "cve_id": [
+                        "CVE-2025-12383",
+                        "CVE-2025-54874",
+                        "CVE-2025-61755",
+                        "CVE-2025-67735",
+                        "CVE-2025-8194",
+                        "CVE-2026-21939"
+                    ],
+                    "severity": "High",
+                    "published_date": "2026-01-20",
+                    "source_id": "cpujan2026"
+                }
+            }
+        }
+    },
+    "MongoDB": {
+        "MongoDB": {
+            "8.0": {
+                "8.0.19": {
+                    "cve_id": [],
+                    "severity": "",
+                    "published_date": "2026-02-10",
+                    "source_id": "8.0.19"
+                },
+                "8.0.18": {
+                    "cve_id": [
+                        "CVE-2026-1847",
+                        "CVE-2026-1848",
+                        "CVE-2026-1849",
+                        "CVE-2026-1850",
+                        "CVE-2026-25609",
+                        "CVE-2026-25611",
+                        "CVE-2026-25612",
+                        "CVE-2026-25613"
+                    ],
+                    "severity": "High",
+                    "published_date": "2026-01-27",
+                    "source_id": "8.0.18"
+                }
+            }
+        }
+    }
+}

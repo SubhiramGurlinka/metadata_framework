@@ -6,4 +6,4 @@ def severity_rank(severity):
             "Low": 1,
             "None": 0
     }
-    return cvss_v3_1_matrix[severity]
+    return cvss_v3_1_matrix.get(severity, 0)
