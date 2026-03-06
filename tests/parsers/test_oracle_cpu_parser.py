@@ -257,7 +257,7 @@ def test_parse_returns_empty_cve_list_when_no_match(mock_get_soup):
 
     # assert result.cve_id == []
     assert isinstance(result, Vulnerability)
-    assert result.cve_id == ['']
+    assert result.cve_id == []
     assert result.severity == ""
 
 

@@ -1,10 +1,10 @@
 # get_json.py
 
-import requests
+from utils.session_logic import get_response
 
 def get_json(url :str):
     try:
-        response = requests.get(url, timeout= 15)
+        response = get_response(url)
         response.raise_for_status()
         return response.json()
     except Exception as e:

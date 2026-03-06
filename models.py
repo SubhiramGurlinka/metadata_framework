@@ -41,7 +41,7 @@ class Vulnerability(BaseModel):
     def validate_cve_format(cls, v):
         pattern = re.compile(r"CVE-\d{4}-\d{4,7}")
         if not v:
-            return [""]
+            return []
         for cve in v:
             if not pattern.fullmatch(cve):
                 raise ValueError(f"Invalid CVE format: {cve}")
