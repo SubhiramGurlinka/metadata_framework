@@ -2,7 +2,7 @@
 
 import re
 from models import Vulnerability
-from utils.get_response import get_response_text
+from utils.get_text import get_response_text
 from utils.severity_rank import severity_rank
 from strategies.base import PageParser
 

@@ -1,9 +1,11 @@
-import requests
+# get_soup.py
+
 from bs4 import BeautifulSoup
+from utils.session_logic import get_response
 
 def get_soup(url :str, parser: str):
     try:
-        response = requests.get(url, timeout = 15)
+        response = get_response(url)
         response.raise_for_status()
         return BeautifulSoup(response.content, parser)
 
