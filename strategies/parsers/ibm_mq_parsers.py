@@ -7,7 +7,7 @@ from strategies.parsers.utils.general_utilities import normalize_date_to_iso
 
 class IBMMQTableParser(PageParser):
     CVE_REGEX = re.compile(r"CVE-\d{4}-\d+")
-    CVSS_REGEX = re.compile(r"CVSS base score (\d+\.\d+)")
+    CVSS_REGEX = re.compile(r"CVSS[^\d]*(\d+\.\d+)")
     HEADER_TEMPLATE = r"\bIBM MQ\b[\s\S]*?\b{version}\b"
 
     # Define severity ranking for comparison
@@ -19,6 +19,19 @@ class IBMMQTableParser(PageParser):
         "Unknown": 0
     }
 
+    def make_fixpack_regex(self, fix_version: str):
+        """
+        Returns a regex pattern that matches IBM MQ fix-pack lines for a given version,
+        handling different word orders, casing, and optional text.
+        """
+        return re.compile(
+            rf"IBM MQ\s+"
+            r"(?:Cumulative Security Update|Fix Pack|cumulative security update|fix pack)\s*"
+            rf"{re.escape(fix_version)}\s+"
+            r"for\s+Windows,\s+UNIX(?:,\s+IBM i)?(?:,\s+IBM MQ Appliance)?",
+            re.I  # Case-insensitive
+        )
+        
     def _get_release_date(self, soup, fixpack_version):
         table = soup.find('table')
         
@@ -57,24 +70,53 @@ class IBMMQTableParser(PageParser):
     def parse(self, content: str, context: dict) -> List[Vulnerability]:
         soup = BeautifulSoup(content, 'html.parser')
         fix_version = context.get("product_fix_version")
+        base_version = context.get("base_version")
         release_date = self._get_release_date(soup, fix_version)
         print("the release date is: ", release_date)
         # 1. Locate the version header
-        pattern = re.compile(self.HEADER_TEMPLATE.format(version=re.escape(fix_version)), re.I)
-        header = next((h3 for h3 in soup.find_all("h3") if pattern.search(h3.get_text(strip=True))), None)
+        
+        if base_version == "9.4":
+            # the way tables or the headers are present is not very consistent and hence had to work this way
+            # Step 1: Find the tag containing the fix-pack line
+            pattern = re.compile(
+                rf"IBM MQ {re.escape(fix_version)}\s+(Cumulative Security Update|Fix Pack)\s+for Windows, Unix, IBM i, IBM MQ Appliance"
+            )
+            fixpack_tag = None
+            for tag in soup.find_all(['strong', 'h3']):
+                text = tag.get_text(strip=True)
+                if pattern.search(text):
+                    fixpack_tag = tag
+                    print("Found Fix Pack Tag:", fixpack_tag)
+                    break
 
-        if not header:
-            return []
+            # Step 2: Find the first table that comes after this tag
+            if fixpack_tag:
+                next_table = fixpack_tag.find_next('table')
+                if next_table:
+                    print("Found Table:")
+                    print(next_table.prettify())
+                else:
+                    print("No table found after the fix-pack tag.")
+            else:
+                print("Fix-pack line not found.")
 
-        table = header.find_next("table")
-        if not table:
-            return []
+            table = next_table
+        else:
+            pattern = re.compile(self.HEADER_TEMPLATE.format(version=re.escape(fix_version)), re.I)
+            header = next((h3 for h3 in soup.find_all("h3") if pattern.search(h3.get_text(strip=True))), None)
+
+            if not header:
+                return []
+
+            table = header.find_next("table")
+            if not table:
+                return []
 
         # Temp storage to aggregate data
         all_cves = set()
         max_cvss = 0.0
         max_severity = "Unknown"
-
+        cvss_list = []
         # 2. Iterate and collect all unique CVEs and highest scores
         for row in table.find_all("tr"):
             text = row.get_text(" ", strip=True)
@@ -85,8 +127,10 @@ class IBMMQTableParser(PageParser):
                 
                 # Check for CVSS in the row
                 cvss_match = self.CVSS_REGEX.search(text)
+                
                 if cvss_match:
                     current_cvss = float(cvss_match.group(1))
+                    cvss_list.append(current_cvss)
                     current_severity = self._calculate_severity(current_cvss)
                     
                     # Track max CVSS
@@ -96,11 +140,7 @@ class IBMMQTableParser(PageParser):
                     # Track max Severity based on ranking
                     if self.SEVERITY_RANK[current_severity] > self.SEVERITY_RANK[max_severity]:
                         max_severity = current_severity
-
-        # 3. Create a single combined Vulnerability object
-        if not all_cves:
-            return []
-
+        print(cvss_list)
         return Vulnerability(
             cve_id=sorted(list(all_cves)), # List of strings e.g. ["CVE-...", "CVE-..."]
             severity=max_severity,
@@ -108,6 +148,6 @@ class IBMMQTableParser(PageParser):
             product=context.get("product"),
             product_base_version=context.get("base_version"),
             product_fix_version=fix_version,
-            source_id=fix_version,
+            source_id=[fix_version],
             published_date=normalize_date_to_iso(release_date) if release_date else None
         )

@@ -75,7 +75,7 @@ class CveMetadataFetcher(Processor):
 
         dictionary_to_append["severity"] = result["severity"]
         dictionary_to_append["cve_id"] = "; ".join(result["cve_id"])
-        dictionary_to_append["source_id"] = result["source_id"]
+        dictionary_to_append["source_id"] = "; ".join(result["source_id"])
 
         # write back the dict to itself
         self.env[dictionary_name] = dictionary_to_append

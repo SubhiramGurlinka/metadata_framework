@@ -8,11 +8,12 @@
           "id": "mq",
           "display_name": "IBM MQ",
           "parser_type": "IBM_mq_fixpack_parser",
-          "supported_versions": ["9.1", "9.2", "9.3"],
+          "supported_versions": ["9.1", "9.2", "9.3", "9.4"],
           "base_urls": {
             "9.1": "https://www.ibm.com/support/pages/fix-list-ibm-mq-version-91-lts",
             "9.2": "https://www.ibm.com/support/pages/fix-list-ibm-mq-version-92-lts",
-            "9.3": "https://www.ibm.com/support/pages/fix-list-ibm-mq-version-93-lts"
+            "9.3": "https://www.ibm.com/support/pages/fix-list-ibm-mq-version-93-lts",
+            "9.4": "https://www.ibm.com/support/pages/fix-list-ibm-mq-version-94-lts"
           }
         },
         "websphere": {
@@ -23,6 +24,16 @@
           "base_urls": {
             "8.5.5": "https://www.ibm.com/support/pages/fix-list-ibm-websphere-application-server-v85",
             "9.0.5": "https://www.ibm.com/support/pages/fix-list-ibm-websphere-application-server-traditional-v9-0"
+          }
+        },
+        "db2": {
+          "id": "db2",
+          "display_name": "IBM Db2",
+          "parser_type": "IBM_db2_fixlist_parser",
+          "base_date_url": "https://www.ibm.com/support/pages/download-db2-fix-packs-version-db2-linux-unix-and-windows",
+          "supported_versions": ["12.1"],
+          "base_urls": {
+            "12.1": "https://www.ibm.com/support/pages/fix-list-db2-version-121-linux-unix-and-windows"
           }
         }
       }
@@ -53,10 +64,10 @@
           "id": "tomcat",
           "display_name": "Apache Tomcat",
           "parser_type": "Apache_tomcat_parser",
-          "supported_versions": ["9.0", "10.0", "11.0"],
+          "supported_versions": ["9.0", "10.1", "11.0"],
           "base_urls": {
             "9.0": "https://tomcat.apache.org/security-9.html",
-            "10.0": "https://tomcat.apache.org/security-10.html",
+            "10.1": "https://tomcat.apache.org/security-10.html",
             "11.0": "https://tomcat.apache.org/security-11.html"
           }
         }
@@ -131,6 +142,22 @@
           "supported_versions": ["7.0", "8.0"],
           "base_urls": {
             "all": "https://www.mongodb.com/docs/upcoming/release-notes/"
+          }
+        }
+      }
+    },
+    "postgresql": {
+      "display_name": "PostgreSQL",
+      "default_parser_type": "PostgreSQLParser",
+      "software": {
+        "postgresql": {
+          "id": "postgresql",
+          "display_name": "PostgreSQL",
+          "parser_type": "PostgreSQL_parser",
+          "supported_versions": ["16", "17"],
+          "base_date_url": "https://www.postgresql.org/docs/release/",
+          "base_urls": {
+            "all": "https://www.postgresql.org/support/security/"
           }
         }
       }

@@ -107,7 +107,7 @@ class OracleCpuParser(PageParser):
             return Vulnerability(
                 vendor="Oracle",
                 cve_id=sorted(list(all_cves)),
-                source_id=context.get("source_id"),
+                source_id=[context.get("source_id")],
                 severity=max_severity,
                 product_base_version=context.get("base_version"),
                 product=context.get("sw_display_name", product_name),

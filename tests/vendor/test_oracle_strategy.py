@@ -269,7 +269,7 @@ def test_process_success_returns_parser_result():
     expected_vulnerability = Vulnerability(
         vendor="Oracle",
         cve_id=["CVE-2026-1234"],
-        source_id="cpujan2026",
+        source_id=["cpujan2026"],
         severity="Critical",
         product_base_version="19",
         product="Oracle DB",

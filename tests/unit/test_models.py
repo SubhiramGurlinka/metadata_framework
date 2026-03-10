@@ -11,7 +11,8 @@ def test_vulnerability_creation_success():
         "vendor": "Apache",
         "product": "Tomcat",
         "product_base_version": "9.0",
-        "product_fix_version": "9.0.82"
+        "product_fix_version": "9.0.82",
+        "source_id": ["9.0.82"]
     }
     vuln = Vulnerability(**data)
     assert vuln.published_date == "2023-10-27"
@@ -20,8 +21,8 @@ def test_vulnerability_creation_success():
 def test_vulnerability_immutability():
     """Ensure frozen=True prevents modification."""
     vuln = Vulnerability(
-        cve_id=["CVE-1"], severity="Low", vendor="V", 
-        product="P", product_base_version="1", product_fix_version="2"
+        cve_id=["CVE-2023-0001"], severity="Low", vendor="V", 
+        product="P", product_base_version="1", product_fix_version="2", source_id=["abc"]
     )
     with pytest.raises(ValidationError):
         vuln.severity = "High"
@@ -36,8 +37,8 @@ def test_vulnerability_immutability():
 def test_vulnerability_date_validation_failures(invalid_date):
     """Test the regex and calendar validation for published_date."""
     data = {
-        "cve_id": ["CVE-1"], "severity": "H", "vendor": "V", 
-        "product": "P", "product_base_version": "1", "product_fix_version": "2",
+        "cve_id": ["CVE-2023-0001"], "severity": "H", "vendor": "V", 
+        "product": "P", "product_base_version": "1", "product_fix_version": "2","source_id": ["abc"],
         "published_date": invalid_date
     }
     with pytest.raises(ValueError) as excinfo:
@@ -49,7 +50,7 @@ def test_vulnerability_cve_id_as_list():
     data = {
         "cve_id": "CVE-2023-1234", # Should be ["CVE-2023-1234"]
         "severity": "High", "vendor": "V", "product": "P",
-        "product_base_version": "1", "product_fix_version": "2"
+        "product_base_version": "1", "product_fix_version": "2", "source_id": ["abc"],
     }
     with pytest.raises(ValidationError):
         Vulnerability(**data)
@@ -57,18 +58,18 @@ def test_vulnerability_cve_id_as_list():
 def test_vulnerability_optional_fields():
     """Verify that optional fields can be omitted safely."""
     data = {
-        "cve_id": ["CVE-1"], "severity": "Medium", "vendor": "V",
-        "product": "P", "product_base_version": "1", "product_fix_version": "2"
+        "cve_id": ["CVE-2023-0001"], "severity": "Medium", "vendor": "V",
+        "product": "P", "product_base_version": "1", "product_fix_version": "2", "source_id": ["abc"]
     }
     vuln = Vulnerability(**data)
     assert vuln.published_date is None
-    assert vuln.source_id is None
+    assert vuln.source_id == ["abc"]
 
 def test_vulnerability_empty_cve_list():
     """Verify behavior with an empty CVE list."""
     data = {
         "cve_id": [], "severity": "Low", "vendor": "V",
-        "product": "P", "product_base_version": "1", "product_fix_version": "2"
+        "product": "P", "product_base_version": "1", "product_fix_version": "2", "source_id": ["abc"],
     }
     vuln = Vulnerability(**data)
     assert vuln.cve_id == []
