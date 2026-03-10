@@ -1,0 +1,1111 @@
+{
+  "test_suite": "Vulnerability_E2E_Regression",
+  "version": "1.0",
+  "test_cases": [
+    {
+      "test_id": "MARIADB-10.11-10.11.15",
+      "vendor": "MariaDB",
+      "product": "MariaDB",
+      "base_version": "10.11",
+      "fix_version": "10.11.15",
+      "expected": {
+        "severity": "High",
+        "published_date": "2025-11-07",
+        "source_id": ["10.11.15"],
+        "cve_id": ["CVE-2026-21968","CVE-2025-13699"]
+      }
+    },
+    {
+      "test_id": "MARIADB-11.4-11.4.9",
+      "vendor": "MariaDB",
+      "product": "MariaDB",
+      "base_version": "11.4",
+      "fix_version": "11.4.9",
+      "expected": {
+        "severity": "High",
+        "published_date": "2025-11-07",
+        "source_id": ["11.4.9"],
+        "cve_id": ["CVE-2026-21968","CVE-2025-13699"]
+      }
+    },
+    {
+      "test_id": "MARIADB-11.8-11.8.5",
+      "vendor": "MariaDB",
+      "product": "MariaDB",
+      "base_version": "11.8",
+      "fix_version": "11.8.5",
+      "expected": {
+        "severity": "",
+        "published_date": "2025-11-15",
+        "source_id": ["11.8.5"],
+        "cve_id": []
+      }
+    },
+
+    {
+      "test_id": "MYSQL-8.0-8.0.45",
+      "vendor": "Oracle",
+      "product": "MySQL Server",
+      "base_version": "8.0",
+      "fix_version": "8.0.45",
+      "expected": {
+        "severity": "High",
+        "published_date": "2026-01-20",
+        "source_id": ["cpujan2026"],
+        "cve_id": ["CVE-2025-9230","CVE-2026-21968","CVE-2026-21936","CVE-2026-21937","CVE-2026-21941","CVE-2026-21948","CVE-2026-21964"]
+      }
+    },
+    {
+      "test_id": "MYSQL-8.4-8.4.8",
+      "vendor": "Oracle",
+      "product": "MySQL Server",
+      "base_version": "8.4",
+      "fix_version": "8.4.8",
+      "expected": {
+        "severity": "Critical",
+        "published_date": "2026-01-20",
+        "source_id": ["cpujan2026"],
+        "cve_id": ["CVE-2025-6965","CVE-2025-9230","CVE-2026-21968","CVE-2026-21936","CVE-2026-21937","CVE-2026-21941","CVE-2026-21948","CVE-2026-21964"]
+      }
+    },
+    {
+      "test_id": "MYSQL-9-9.6.0",
+      "vendor": "Oracle",
+      "product": "MySQL Server",
+      "base_version": "9",
+      "fix_version": "9.6.0",
+      "expected": {
+        "severity": "High",
+        "published_date": "2026-01-20",
+        "source_id": ["cpujan2026"],
+        "cve_id": ["CVE-2025-9230","CVE-2026-21949","CVE-2026-21950","CVE-2026-21968","CVE-2026-21929","CVE-2026-21936","CVE-2026-21937","CVE-2026-21941","CVE-2026-21948","CVE-2026-21952","CVE-2026-21964","CVE-2026-21965"]
+      }
+    },
+
+    {
+      "test_id": "WEBLOGIC-12.2.1.4-12.2.1.4.0",
+      "vendor": "Oracle",
+      "product": "Oracle WebLogic Server",
+      "base_version": "12.2.1.4",
+      "fix_version": "12.2.1.4.0",
+      "expected": {
+        "severity": "High",
+        "published_date": "2026-01-20",
+        "source_id": ["cpujan2026"],
+        "cve_id": ["CVE-2025-48976","CVE-2025-41249","CVE-2025-53864","CVE-2024-47554"]
+      }
+    },
+    {
+      "test_id": "WEBLOGIC-14.1.1.0-14.1.1.0.0",
+      "vendor": "Oracle",
+      "product": "Oracle WebLogic Server",
+      "base_version": "14.1.1.0",
+      "fix_version": "14.1.1.0.0",
+      "expected": {
+        "severity": "High",
+        "published_date": "2026-01-20",
+        "source_id": ["cpujan2026"],
+        "cve_id": ["CVE-2025-48976","CVE-2025-41249","CVE-2025-12383","CVE-2025-53864","CVE-2024-47554"]
+      }
+    },
+
+    {
+      "test_id": "JAVA-8u-8u481",
+      "vendor": "Oracle",
+      "product": "Oracle Java SE",
+      "base_version": "8u",
+      "fix_version": "8u481",
+      "expected": {
+        "severity": "High",
+        "published_date": "2026-01-20",
+        "source_id": ["cpujan2026"],
+        "cve_id": ["CVE-2026-21945","CVE-2026-21932","CVE-2026-21933","CVE-2026-21925"]
+      }
+    },
+    {
+      "test_id": "JAVA-11.0-11.0.30",
+      "vendor": "Oracle",
+      "product": "Oracle Java SE",
+      "base_version": "11.0",
+      "fix_version": "11.0.30",
+      "expected": {
+        "severity": "High",
+        "published_date": "2026-01-20",
+        "source_id": ["cpujan2026"],
+        "cve_id": ["CVE-2026-21945","CVE-2026-21932","CVE-2026-21933","CVE-2026-21925"]
+      }
+    },
+    {
+      "test_id": "JAVA-17.0-17.0.18",
+      "vendor": "Oracle",
+      "product": "Oracle Java SE",
+      "base_version": "17.0",
+      "fix_version": "17.0.18",
+      "expected": {
+        "severity": "High",
+        "published_date": "2026-01-20",
+        "source_id": ["cpujan2026"],
+        "cve_id": ["CVE-2026-21945","CVE-2026-21932","CVE-2026-21933","CVE-2026-21925"]
+      }
+    },
+    {
+      "test_id": "JAVA-21.0-21.0.10",
+      "vendor": "Oracle",
+      "product": "Oracle Java SE",
+      "base_version": "21.0",
+      "fix_version": "21.0.10",
+      "expected": {
+        "severity": "High",
+        "published_date": "2026-01-20",
+        "source_id": ["cpujan2026"],
+        "cve_id": ["CVE-2026-21945","CVE-2026-21932","CVE-2026-21933","CVE-2026-21925"]
+      }
+    },
+    {
+      "test_id": "JAVA-25.0-25.0.2",
+      "vendor": "Oracle",
+      "product": "Oracle Java SE",
+      "base_version": "25.0",
+      "fix_version": "25.0.2",
+      "expected": {
+        "severity": "High",
+        "published_date": "2026-01-20",
+        "source_id": ["cpujan2026"],
+        "cve_id": ["CVE-2026-21945","CVE-2026-21932","CVE-2026-21933","CVE-2026-21925"]
+      }
+    },
+    {
+      "test_id": "TOMCAT-9.0-9.0.115",
+      "vendor": "apache",
+      "product": "tomcat",
+      "base_version": "9.0",
+      "fix_version": "9.0.115",
+      "expected": {
+        "severity": "Moderate",
+        "published_date": "2026-01-23",
+        "source_id": ["9.0.115"],
+        "cve_id": ["CVE-2026-24734"]
+      }
+    },
+    {
+      "test_id": "TOMCAT-9.0-9.0.113",
+      "vendor": "apache",
+      "product": "tomcat",
+      "base_version": "9.0",
+      "fix_version": "9.0.113",
+      "expected": {
+        "severity": "Moderate",
+        "published_date": "2025-12-07",
+        "source_id": ["9.0.113"],
+        "cve_id": ["CVE-2026-24733","CVE-2025-66614"]
+      }
+    },
+    {
+      "test_id": "TOMCAT-9.0-9.0.106",
+      "vendor": "apache",
+      "product": "tomcat",
+      "base_version": "9.0",
+      "fix_version": "9.0.106",
+      "expected": {
+        "severity": "Important",
+        "published_date": "2025-06-10",
+        "source_id": ["9.0.106"],
+        "cve_id": ["CVE-2025-55668","CVE-2025-49125","CVE-2025-49124","CVE-2025-48988","CVE-2025-48976"]
+      }
+    },
+    {
+      "test_id": "TOMCAT-9.0-9.0.98",
+      "vendor": "apache",
+      "product": "tomcat",
+      "base_version": "9.0",
+      "fix_version": "9.0.98",
+      "expected": {
+        "severity": "Important",
+        "published_date": "2024-12-09",
+        "source_id": ["9.0.98"],
+        "cve_id": ["CVE-2024-56337","CVE-2024-54677","CVE-2024-50379"]
+      }
+    },
+    {
+      "test_id": "TOMCAT-9.0-9.0.81",
+      "vendor": "apache",
+      "product": "tomcat",
+      "base_version": "9.0",
+      "fix_version": "9.0.81",
+      "expected": {
+        "severity": "Important",
+        "published_date": "2023-10-10",
+        "source_id": ["9.0.81"],
+        "cve_id": ["CVE-2023-45648","CVE-2023-44487","CVE-2023-42795","CVE-2023-42794"]
+      }
+    },
+
+    {
+      "test_id": "TOMCAT-10.1-10.1.52",
+      "vendor": "apache",
+      "product": "tomcat",
+      "base_version": "10.1",
+      "fix_version": "10.1.52",
+      "expected": {
+        "severity": "Moderate",
+        "published_date": "2026-01-27",
+        "source_id": ["10.1.52"],
+        "cve_id": ["CVE-2026-24734"]
+      }
+    },
+    {
+      "test_id": "TOMCAT-10.1-10.1.50",
+      "vendor": "apache",
+      "product": "tomcat",
+      "base_version": "10.1",
+      "fix_version": "10.1.50",
+      "expected": {
+        "severity": "Moderate",
+        "published_date": "2025-12-08",
+        "source_id": ["10.1.50"],
+        "cve_id": ["CVE-2026-24733","CVE-2025-66614"]
+      }
+    },
+    {
+      "test_id": "TOMCAT-10.1-10.1.45",
+      "vendor": "apache",
+      "product": "tomcat",
+      "base_version": "10.1",
+      "fix_version": "10.1.45",
+      "expected": {
+        "severity": "Important",
+        "published_date": "2025-09-08",
+        "source_id": ["10.1.45"],
+        "cve_id": ["CVE-2025-55754","CVE-2025-55752"]
+      }
+    },
+    {
+      "test_id": "TOMCAT-10.1-10.1.42",
+      "vendor": "apache",
+      "product": "tomcat",
+      "base_version": "10.1",
+      "fix_version": "10.1.42",
+      "expected": {
+        "severity": "Important",
+        "published_date": "2025-06-09",
+        "source_id": ["10.1.42"],
+        "cve_id": ["CVE-2025-55668","CVE-2025-49125","CVE-2025-49124","CVE-2025-48988","CVE-2025-48976"]
+      }
+    },
+    {
+      "test_id": "TOMCAT-10.1-10.1.34",
+      "vendor": "apache",
+      "product": "tomcat",
+      "base_version": "10.1",
+      "fix_version": "10.1.34",
+      "expected": {
+        "severity": "Important",
+        "published_date": "2024-12-09",
+        "source_id": ["10.1.34"],
+        "cve_id": ["CVE-2024-56337","CVE-2024-54677","CVE-2024-50379"]
+      }
+    },
+
+    {
+      "test_id": "TOMCAT-11.0-11.0.18",
+      "vendor": "apache",
+      "product": "tomcat",
+      "base_version": "11.0",
+      "fix_version": "11.0.18",
+      "expected": {
+        "severity": "Moderate",
+        "published_date": "2026-01-26",
+        "source_id": ["11.0.18"],
+        "cve_id": ["CVE-2026-24734"]
+      }
+    },
+    {
+      "test_id": "TOMCAT-11.0-11.0.15",
+      "vendor": "apache",
+      "product": "tomcat",
+      "base_version": "11.0",
+      "fix_version": "11.0.15",
+      "expected": {
+        "severity": "Moderate",
+        "published_date": "2025-12-08",
+        "source_id": ["11.0.15"],
+        "cve_id": ["CVE-2026-24733","CVE-2025-66614"]
+      }
+    },
+    {
+      "test_id": "TOMCAT-11.0-11.0.12",
+      "vendor": "apache",
+      "product": "tomcat",
+      "base_version": "11.0",
+      "fix_version": "11.0.12",
+      "expected": {
+        "severity": "Low",
+        "published_date": "2025-10-07",
+        "source_id": ["11.0.12"],
+        "cve_id": ["CVE-2025-61795"]
+      }
+    },
+    {
+      "test_id": "TOMCAT-11.0-11.0.11",
+      "vendor": "apache",
+      "product": "tomcat",
+      "base_version": "11.0",
+      "fix_version": "11.0.11",
+      "expected": {
+        "severity": "Important",
+        "published_date": "2025-09-05",
+        "source_id": ["11.0.11"],
+        "cve_id": ["CVE-2025-55754","CVE-2025-55752"]
+      }
+    },
+    {
+      "test_id": "TOMCAT-11.0-11.0.8",
+      "vendor": "apache",
+      "product": "tomcat",
+      "base_version": "11.0",
+      "fix_version": "11.0.8",
+      "expected": {
+        "severity": "Important",
+        "published_date": "2025-06-09",
+        "source_id": ["11.0.8"],
+        "cve_id": ["CVE-2025-55668","CVE-2025-49125","CVE-2025-49124","CVE-2025-48988","CVE-2025-48976"]
+      }
+    },
+    {
+      "test_id": "WAS-8.5.5-8.5.5.29",
+      "vendor": "ibm",
+      "product": "websphere",
+      "base_version": "8.5.5",
+      "fix_version": "8.5.5.29",
+      "expected": {
+        "severity": "High",
+        "published_date": "2026-02-09",
+        "source_id": ["8.5.5.29"],
+        "cve_id": [
+          "CVE-2025-48976",
+          "CVE-2025-7962",
+          "CVE-2025-33142",
+          "CVE-2025-36099",
+          "CVE-2025-12635"
+        ]
+      }
+    },
+    {
+      "test_id": "WAS-8.5.5-8.5.5.28",
+      "vendor": "ibm",
+      "product": "websphere",
+      "base_version": "8.5.5",
+      "fix_version": "8.5.5.28",
+      "expected": {
+        "severity": "Critical",
+        "published_date": "2025-07-28",
+        "source_id": ["8.5.5.28"],
+        "cve_id": [
+          "CVE-2025-36038",
+          "CVE-2025-33104",
+          "CVE-2025-27907"
+        ]
+      }
+    },
+    {
+      "test_id": "WAS-8.5.5-8.5.5.27",
+      "vendor": "ibm",
+      "product": "websphere",
+      "base_version": "8.5.5",
+      "fix_version": "8.5.5.27",
+      "expected": {
+        "severity": "Medium",
+        "published_date": "2025-02-10",
+        "source_id": ["8.5.5.27"],
+        "cve_id": [
+          "CVE-2024-45073",
+          "CVE-2024-45087",
+          "CVE-2024-45071",
+          "CVE-2024-45072",
+          "CVE-2024-45085",
+          "CVE-2023-50315",
+          "CVE-2024-45086"
+        ]
+      }
+    },
+    {
+      "test_id": "WAS-8.5.5-8.5.5.25",
+      "vendor": "ibm",
+      "product": "websphere",
+      "base_version": "8.5.5",
+      "fix_version": "8.5.5.25",
+      "expected": {
+        "severity": "Unknown",
+        "published_date": "2024-02-19",
+        "source_id": ["8.5.5.25"],
+        "cve_id": []
+      }
+    },
+    {
+      "test_id": "WAS-8.5.5-8.5.5.24",
+      "vendor": "ibm",
+      "product": "websphere",
+      "base_version": "8.5.5",
+      "fix_version": "8.5.5.24",
+      "expected": {
+        "severity": "High",
+        "published_date": "2023-07-31",
+        "source_id": ["8.5.5.24"],
+        "cve_id": [
+          "CVE-2023-24966",
+          "CVE-2023-27554",
+          "CVE-2022-39161",
+          "CVE-2023-35890",
+          "CVE-2023-24998"
+        ]
+      }
+    },
+    {
+      "test_id": "WAS-9.0.5-9.0.5.26",
+      "vendor": "ibm",
+      "product": "websphere",
+      "base_version": "9.0.5",
+      "fix_version": "9.0.5.26",
+      "expected": {
+        "severity": "High",
+        "published_date": "2025-12-02",
+        "source_id": ["9.0.5.26"],
+        "cve_id": [
+          "CVE-2025-48976",
+          "CVE-2025-36099"
+        ]
+      }
+    },
+    {
+      "test_id": "WAS-9.0.5-9.0.5.25",
+      "vendor": "ibm",
+      "product": "websphere",
+      "base_version": "9.0.5",
+      "fix_version": "9.0.5.25",
+      "expected": {
+        "severity": "Critical",
+        "published_date": "2025-09-09",
+        "source_id": ["9.0.5.25"],
+        "cve_id": [
+          "CVE-2025-36038",
+          "CVE-2025-36097",
+          "CVE-2024-56339",
+          "CVE-2025-33142"
+        ]
+      }
+    },
+    {
+      "test_id": "WAS-9.0.5-9.0.5.24",
+      "vendor": "ibm",
+      "product": "websphere",
+      "base_version": "9.0.5",
+      "fix_version": "9.0.5.24",
+      "expected": {
+        "severity": "Medium",
+        "published_date": "2025-06-17",
+        "source_id": ["9.0.5.24"],
+        "cve_id": [
+          "CVE-2025-33104",
+          "CVE-2025-27907"
+        ]
+      }
+    },
+    {
+      "test_id": "WAS-9.0.5-9.0.5.23",
+      "vendor": "ibm",
+      "product": "websphere",
+      "base_version": "9.0.5",
+      "fix_version": "9.0.5.23",
+      "expected": {
+        "severity": "Unknown",
+        "published_date": "2025-03-25",
+        "source_id": ["9.0.5.23"],
+        "cve_id": []
+      }
+    },
+    {
+      "test_id": "WAS-9.0.5-9.0.5.22",
+      "vendor": "ibm",
+      "product": "websphere",
+      "base_version": "9.0.5",
+      "fix_version": "9.0.5.22",
+      "expected": {
+        "severity": "Medium",
+        "published_date": "2024-09-10",
+        "source_id": ["9.0.5.22"],
+        "cve_id": [
+          "CVE-2024-45073",
+          "CVE-2024-45087",
+          "CVE-2024-45071",
+          "CVE-2024-45072",
+          "CVE-2024-45086"
+        ]
+      }
+    },
+    {
+      "test_id": "MQ-9.1-9.1.0.33",
+      "vendor": "ibm",
+      "product": "mq",
+      "base_version": "9.1",
+      "fix_version": "9.1.0.33",
+      "expected": {
+        "severity": "High",
+        "published_date": "2025-12-17",
+        "source_id": ["9.1.0.33"],
+        "cve_id": ["CVE-2025-30754","CVE-2025-53057","CVE-2025-53066"]
+      }
+    },
+    {
+      "test_id": "MQ-9.1-9.1.0.32",
+      "vendor": "ibm",
+      "product": "mq",
+      "base_version": "9.1",
+      "fix_version": "9.1.0.32",
+      "expected": {
+        "severity": "High",
+        "published_date": "2025-10-23",
+        "source_id": ["9.1.0.32"],
+        "cve_id": ["CVE-2025-36047","CVE-2025-48976","CVE-2020-36732"]
+      }
+    },
+    {
+      "test_id": "MQ-9.1-9.1.0.31",
+      "vendor": "ibm",
+      "product": "mq",
+      "base_version": "9.1",
+      "fix_version": "9.1.0.31",
+      "expected": {
+        "severity": "Medium",
+        "published_date": "2025-09-04",
+        "source_id": ["9.1.0.31"],
+        "cve_id": ["CVE-2025-36100"]
+      }
+    },
+    {
+      "test_id": "MQ-9.1-9.1.0.29",
+      "vendor": "ibm",
+      "product": "mq",
+      "base_version": "9.1",
+      "fix_version": "9.1.0.29",
+      "expected": {
+        "severity": "Critical",
+        "published_date": "2025-06-27",
+        "source_id": ["9.1.0.29"],
+        "cve_id": ["CVE-2025-4447","CVE-2025-21587","CVE-2025-30698","CVE-2025-2900","CVE-2025-30472"]
+      }
+    },
+    {
+      "test_id": "MQ-9.1-9.1.0.28",
+      "vendor": "ibm",
+      "product": "mq",
+      "base_version": "9.1",
+      "fix_version": "9.1.0.28",
+      "expected": {
+        "severity": "Unknown",
+        "published_date": "2025-05-01",
+        "source_id": ["9.1.0.28"],
+        "cve_id": []
+      }
+    },
+
+    {
+      "test_id": "MQ-9.2-9.2.0.40",
+      "vendor": "ibm",
+      "product": "mq",
+      "base_version": "9.2",
+      "fix_version": "9.2.0.40",
+      "expected": {
+        "severity": "High",
+        "published_date": "2025-12-17",
+        "source_id": ["9.2.0.40"],
+        "cve_id": ["CVE-2025-53057","CVE-2025-53066"]
+      }
+    },
+    {
+      "test_id": "MQ-9.2-9.2.0.38",
+      "vendor": "ibm",
+      "product": "mq",
+      "base_version": "9.2",
+      "fix_version": "9.2.0.38",
+      "expected": {
+        "severity": "High",
+        "published_date": "2025-10-23",
+        "source_id": ["9.2.0.38"],
+        "cve_id": ["CVE-2025-30754","CVE-2025-36047","CVE-2025-48976","CVE-2020-36732"]
+      }
+    },
+    {
+      "test_id": "MQ-9.2-9.2.0.37",
+      "vendor": "ibm",
+      "product": "mq",
+      "base_version": "9.2",
+      "fix_version": "9.2.0.37",
+      "expected": {
+        "severity": "Medium",
+        "published_date": "2025-09-04",
+        "source_id": ["9.2.0.37"],
+        "cve_id": ["CVE-2025-36100"]
+      }
+    },
+    {
+      "test_id": "MQ-9.2-9.2.0.36",
+      "vendor": "ibm",
+      "product": "mq",
+      "base_version": "9.2",
+      "fix_version": "9.2.0.36",
+      "expected": {
+        "severity": "Critical",
+        "published_date": "2025-06-27",
+        "source_id": ["9.2.0.36"],
+        "cve_id": ["CVE-2025-21587","CVE-2025-4447","CVE-2025-30472"]
+      }
+    },
+    {
+      "test_id": "MQ-9.2-9.2.0.35",
+      "vendor": "ibm",
+      "product": "mq",
+      "base_version": "9.2",
+      "fix_version": "9.2.0.35",
+      "expected": {
+        "severity": "Unknown",
+        "published_date": "2025-05-01",
+        "source_id": ["9.2.0.35"],
+        "cve_id": []
+      }
+    },
+
+    {
+      "test_id": "MQ-9.3-9.3.0.36",
+      "vendor": "ibm",
+      "product": "mq",
+      "base_version": "9.3",
+      "fix_version": "9.3.0.36",
+      "expected": {
+        "severity": "High",
+        "published_date": "2025-12-17",
+        "source_id": ["9.3.0.36"],
+        "cve_id": ["CVE-2025-53057","CVE-2025-53066"]
+      }
+    },
+    {
+      "test_id": "MQ-9.3-9.3.0.35",
+      "vendor": "ibm",
+      "product": "mq",
+      "base_version": "9.3",
+      "fix_version": "9.3.0.35",
+      "expected": {
+        "severity": "High",
+        "published_date": "2025-10-23",
+        "source_id": ["9.3.0.35"],
+        "cve_id": ["CVE-2025-30754","CVE-2025-36047","CVE-2025-48976","CVE-2020-36732"]
+      }
+    },
+    {
+      "test_id": "MQ-9.3-9.3.0.31",
+      "vendor": "ibm",
+      "product": "mq",
+      "base_version": "9.3",
+      "fix_version": "9.3.0.31",
+      "expected": {
+        "severity": "Medium",
+        "published_date": "2025-09-04",
+        "source_id": ["9.3.0.31"],
+        "cve_id": ["CVE-2025-36100"]
+      }
+    },
+    {
+      "test_id": "MQ-9.3-9.3.0.30",
+      "vendor": "ibm",
+      "product": "mq",
+      "base_version": "9.3",
+      "fix_version": "9.3.0.30",
+      "expected": {
+        "severity": "Critical",
+        "published_date": "2025-06-27",
+        "source_id": ["9.3.0.30"],
+        "cve_id": ["CVE-2025-33181", "CVE-2025-21587", "CVE-2025-4447", "CVE-2025-21597", "CVE-2025-4447", "CVE-2025-21587", "CVE-2025-30698", "CVE-2025-2900", "CVE-2025-30472"]
+      }
+    },
+    {
+      "test_id": "MQ-9.3-9.3.0.28",
+      "vendor": "ibm",
+      "product": "mq",
+      "base_version": "9.3",
+      "fix_version": "9.3.0.28",
+      "expected": {
+        "severity": "High",
+        "published_date": "2025-05-01",
+        "source_id": ["9.3.0.28"],
+        "cve_id": ["CVE-2022-49043"]
+      }
+    },
+    {
+      "test_id": "MQ-9.4-9.4.0.20",
+      "vendor": "ibm",
+      "product": "mq",
+      "base_version": "9.4",
+      "fix_version": "9.4.0.20",
+      "expected": {
+        "severity": "Critical",
+        "published_date": "2026-02-26",
+        "source_id": ["9.4.0.20"],
+        "cve_id": ["CVE-2026-1713", "CVE-2025-12635", "CVE-2025-39971", "CVE-2025-39955", "CVE-2025-15467", "CVE-2026-22796"]
+      }
+    },
+    {
+      "test_id": "MQ-9.4-9.4.0.17",
+      "vendor": "ibm",
+      "product": "mq",
+      "base_version": "9.4",
+      "fix_version": "9.4.0.17",
+      "expected": {
+        "severity": "High",
+        "published_date": "2025-12-17",
+        "source_id": ["9.4.0.17"],
+        "cve_id": ["CVE-2025-53057","CVE-2025-53066"]
+      }
+    },
+    {
+      "test_id": "MQ-9.4-9.4.0.16",
+      "vendor": "ibm",
+      "product": "mq",
+      "base_version": "9.4",
+      "fix_version": "9.4.0.16",
+      "expected": {
+        "severity": "High",
+        "published_date": "2025-10-23",
+        "source_id": ["9.4.0.16"],
+        "cve_id": ["CVE-2025-36047","CVE-2025-48976","CVE-2025-8058","CVE-2025-7425","CVE-2020-36732"]
+      }
+    },
+    {
+      "test_id": "MQ-9.4-9.4.0.15",
+      "vendor": "ibm",
+      "product": "mq",
+      "base_version": "9.4",
+      "fix_version": "9.4.0.15",
+      "expected": {
+        "severity": "Medium",
+        "published_date": "2025-09-04",
+        "source_id": ["9.4.0.15"],
+        "cve_id": ["CVE-2025-36100","CVE-2025-30754"]
+      }
+    },
+    {
+      "test_id": "MQ-9.4-9.4.0.12",
+      "vendor": "ibm",
+      "product": "mq",
+      "base_version": "9.4",
+      "fix_version": "9.4.0.12",
+      "expected": {
+        "severity": "Critical",
+        "published_date": "2025-06-27",
+        "source_id": ["9.4.0.12"],
+        "cve_id": ["CVE-2025-33181","CVE-2025-3631","CVE-2025-21587","CVE-2025-4447","CVE-2025-30698","CVE-2025-2900","CVE-2025-30472"]
+      }
+    },
+    {
+      "test_id": "MQ-9.4-9.4.0.11",
+      "vendor": "ibm",
+      "product": "mq",
+      "base_version": "9.4",
+      "fix_version": "9.4.0.11",
+      "expected": {
+        "severity": "High",
+        "published_date": "2025-05-01",
+        "source_id": ["9.4.0.11"],
+        "cve_id": ["CVE-2022-49043","CVE-2025-27365"]
+      }
+    },
+    {
+      "test_id": "MQ-9.4-9.4.0.10",
+      "vendor": "ibm",
+      "product": "mq",
+      "base_version": "9.4",
+      "fix_version": "9.4.0.10",
+      "expected": {
+        "severity": "High",
+        "published_date": "2025-02-27",
+        "source_id": ["9.4.0.10"],
+        "cve_id": ["CVE-2025-23225", "CVE-2024-54175", "CVE-2024-54173", "CVE-2024-21235", "CVE-2024-21217", "CVE-2024-21210", "CVE-2024-21208", "CVE-2024-10917", "CVE-2025-0975", "CVE-2024-53088", "CVE-2024-53122"]
+      }
+    },
+
+    {
+      "test_id": "DB2-12.1-12.1.2.0",
+      "vendor": "ibm",
+      "product": "db2",
+      "base_version": "12.1",
+      "fix_version": "12.1.2",
+      "expected": {
+        "severity": "High",
+        "published_date": "2025-06-05",
+        "source_id": ["7235449"],
+        "cve_id": ["CVE-2024-7254","CVE-2024-45663", "CVE-2025-2518", "CVE-2025-1000", "CVE-2025-1992", "CVE-2025-33143", "CVE-2024-41762", "CVE-2024-49350", "CVE-2024-47535", "CVE-2025-1493", "CVE-2024-52903", "CVE-2025-0915", "CVE-2025-3050"]
+      }
+    },
+    {
+      "test_id": "Jboss-8.0-8.0.11",
+      "vendor": "redhat",
+      "product": "jboss",
+      "base_version": "8.0",
+      "fix_version": "8.0.11",
+      "expected": {
+        "severity": "Moderate",
+        "published_date": "2025-12-04",
+        "source_id": ["RHSA-2025:22775","RHSA-2025:22773"],
+        "cve_id": ["CVE-2025-4949"]
+      }
+    },
+    {
+      "test_id": "Jboss-8.0-8.0.9",
+      "vendor": "redhat",
+      "product": "jboss",
+      "base_version": "8.0",
+      "fix_version": "8.0.9",
+      "expected": {
+        "severity": "Important",
+        "published_date": "2025-10-02",
+        "source_id": ["RHSA-2025:17317"],
+        "cve_id": ["CVE-2025-48913","CVE-2025-55163","CVE-2025-58056"]
+      }
+    },
+    {
+      "test_id": "Jboss-8.0-8.0.8",
+      "vendor": "redhat",
+      "product": "jboss",
+      "base_version": "8.0",
+      "fix_version": "8.0.8",
+      "expected": {
+        "severity": "Important",
+        "published_date": "2025-07-07",
+        "source_id": ["RHSA-2025:10453","RHSA-2025:10452"],
+        "cve_id": ["CVE-2025-2251","CVE-2025-2901","CVE-2025-23184","CVE-2025-27611","CVE-2025-48734"]
+      }
+    },
+    {
+      "test_id": "Jboss-8.0-8.0.7",
+      "vendor": "redhat",
+      "product": "jboss",
+      "base_version": "8.0",
+      "fix_version": "8.0.7",
+      "expected": {
+        "severity": "Moderate",
+        "published_date": "2025-04-17",
+        "source_id": ["RHSA-2025:3990","RHSA-2025:3989"],
+        "cve_id": ["CVE-2024-12369","CVE-2025-23367"]
+      }
+    },
+    {
+      "test_id": "Jboss-8.0-8.0.6",
+      "vendor": "redhat",
+      "product": "jboss",
+      "base_version": "8.0",
+      "fix_version": "8.0.6",
+      "expected": {
+        "severity": "Important",
+        "published_date": "2025-03-03",
+        "source_id": ["RHSA-2025:3357", "RHSA-2025:2026", "RHSA-2025:2025"],
+        "cve_id": ["CVE-2024-10234", "CVE-2024-8447", "CVE-2024-47535", "CVE-2025-24970", "CVE-2025-25193"]
+      }
+    },
+
+    {
+      "test_id": "Jboss-7.4-7.4.23",
+      "vendor": "redhat",
+      "product": "jboss",
+      "base_version": "7.4",
+      "fix_version": "7.4.23",
+      "expected": {
+        "severity": "Important",
+        "published_date": "2025-07-14",
+        "source_id": ["RHSA-2025:10926","RHSA-2025:10925","RHSA-2025:10924"],
+        "cve_id": ["CVE-2024-10234","CVE-2025-2251","CVE-2025-2901","CVE-2025-23184","CVE-2025-23366","CVE-2025-35036","CVE-2025-48734"]
+      }
+    },
+    {
+      "test_id": "Jboss-7.4-7.4.22",
+      "vendor": "redhat",
+      "product": "jboss",
+      "base_version": "7.4",
+      "fix_version": "7.4.22",
+      "expected": {
+        "severity": "Important",
+        "published_date": "2025-05-06",
+        "source_id": ["RHSA-2025:9115","RHSA-2025:4550","RHSA-2025:4549","RHSA-2025:4548"],
+        "cve_id": ["CVE-2025-48734","CVE-2024-47535","CVE-2025-24970","CVE-2025-25193"]
+      }
+    },
+    {
+      "test_id": "Jboss-7.4-7.4.21",
+      "vendor": "redhat",
+      "product": "jboss",
+      "base_version": "7.4",
+      "fix_version": "7.4.21",
+      "expected": {
+        "severity": "Important",
+        "published_date": "2025-02-18",
+        "source_id": ["RHSA-2025:3465","RHSA-2025:1638","RHSA-2025:1637","RHSA-2025:1636"],
+        "cve_id": ["CVE-2024-47535","CVE-2024-51127","CVE-2025-23367","CVE-2025-24970","CVE-2025-25193","CVE-2025-48734","CVE-2025-52999"]
+      }
+    },
+    {
+      "test_id": "Jboss-7.4-7.4.20",
+      "vendor": "redhat",
+      "product": "jboss",
+      "base_version": "7.4",
+      "fix_version": "7.4.20",
+      "expected": {
+        "severity": "Moderate",
+        "published_date": "2024-12-10",
+        "source_id": ["RHSA-2024:10929","RHSA-2024:10928","RHSA-2024:10927"],
+        "cve_id": ["CVE-2024-4109"]
+      }
+    },
+    {
+      "test_id": "Jboss-7.4-7.4.19",
+      "vendor": "redhat",
+      "product": "jboss",
+      "base_version": "7.4",
+      "fix_version": "7.4.19",
+      "expected": {
+        "severity": "Important",
+        "published_date": "2024-10-14",
+        "source_id": ["RHSA-2024:8077","RHSA-2024:8076","RHSA-2024:8075"],
+        "cve_id": ["CVE-2022-34169","CVE-2022-36033","CVE-2023-51775","CVE-2024-4029","CVE-2024-4068"]
+      }
+    },
+
+    {
+      "test_id": "PostgreSQL-16-16.12",
+      "vendor": "postgresql",
+      "product": "postgresql",
+      "base_version": "16",
+      "fix_version": "16.12",
+      "expected": {
+        "severity": "High",
+        "published_date": "2026-02-12",
+        "source_id": ["16.12"],
+        "cve_id": ["CVE-2026-2006","CVE-2026-2005","CVE-2026-2004","CVE-2026-2003"]
+      }
+    },
+    {
+      "test_id": "PostgreSQL-16-16.11",
+      "vendor": "postgresql",
+      "product": "postgresql",
+      "base_version": "16",
+      "fix_version": "16.11",
+      "expected": {
+        "severity": "Medium",
+        "published_date": "2025-11-13",
+        "source_id": ["16.11"],
+        "cve_id": ["CVE-2025-12818","CVE-2025-12817"]
+      }
+    },
+    {
+      "test_id": "PostgreSQL-16-16.10",
+      "vendor": "postgresql",
+      "product": "postgresql",
+      "base_version": "16",
+      "fix_version": "16.10",
+      "expected": {
+        "severity": "High",
+        "published_date": "2025-08-14",
+        "source_id": ["16.10"],
+        "cve_id": ["CVE-2025-8715","CVE-2025-8714","CVE-2025-8713"]
+      }
+    },
+    {
+      "test_id": "PostgreSQL-16-16.9",
+      "vendor": "postgresql",
+      "product": "postgresql",
+      "base_version": "16",
+      "fix_version": "16.9",
+      "expected": {
+        "severity": "Medium",
+        "published_date": "2025-05-08",
+        "source_id": ["16.9"],
+        "cve_id": ["CVE-2025-4207"]
+      }
+    },
+    {
+      "test_id": "PostgreSQL-16-16.7",
+      "vendor": "postgresql",
+      "product": "postgresql",
+      "base_version": "16",
+      "fix_version": "16.7",
+      "expected": {
+        "severity": "High",
+        "published_date": "2025-02-13",
+        "source_id": ["16.7"],
+        "cve_id": ["CVE-2025-1094"]
+      }
+    },
+
+    {
+      "test_id": "PostgreSQL-17-17.8",
+      "vendor": "postgresql",
+      "product": "postgresql",
+      "base_version": "17",
+      "fix_version": "17.8",
+      "expected": {
+        "severity": "High",
+        "published_date": "2026-02-12",
+        "source_id": ["17.8"],
+        "cve_id": ["CVE-2026-2006","CVE-2026-2005","CVE-2026-2004","CVE-2026-2003"]
+      }
+    },
+    {
+      "test_id": "PostgreSQL-17-17.7",
+      "vendor": "postgresql",
+      "product": "postgresql",
+      "base_version": "17",
+      "fix_version": "17.7",
+      "expected": {
+        "severity": "Medium",
+        "published_date": "2025-11-13",
+        "source_id": ["17.7"],
+        "cve_id": ["CVE-2025-12818","CVE-2025-12817"]
+      }
+    },
+    {
+      "test_id": "PostgreSQL-17-17.6",
+      "vendor": "postgresql",
+      "product": "postgresql",
+      "base_version": "17",
+      "fix_version": "17.6",
+      "expected": {
+        "severity": "High",
+        "published_date": "2025-08-14",
+        "source_id": ["17.6"],
+        "cve_id": ["CVE-2025-8715","CVE-2025-8714","CVE-2025-8713"]
+      }
+    },
+    {
+      "test_id": "PostgreSQL-17-17.5",
+      "vendor": "postgresql",
+      "product": "postgresql",
+      "base_version": "17",
+      "fix_version": "17.5",
+      "expected": {
+        "severity": "Medium",
+        "published_date": "2025-05-08",
+        "source_id": ["17.5"],
+        "cve_id": ["CVE-2025-4207"]
+      }
+    },
+    {
+      "test_id": "PostgreSQL-17-17.3",
+      "vendor": "postgresql",
+      "product": "postgresql",
+      "base_version": "17",
+      "fix_version": "17.3",
+      "expected": {
+        "severity": "High",
+        "published_date": "2025-02-13",
+        "source_id": ["17.3"],
+        "cve_id": ["CVE-2025-1094"]
+      }
+    }
+  ]
+}

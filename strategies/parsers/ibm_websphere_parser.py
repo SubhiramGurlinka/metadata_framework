@@ -40,17 +40,20 @@ class IBMWebSphereTableParser(PageParser):
         fix_version = context.get("product_fix_version")
         
         # 1. Locate the Fix Pack section
-        pattern = re.compile(self.FIXPACK_TEMPLATE.format(version=re.escape(fix_version)), re.I)
-        anchor = soup.find(string=pattern)
+        # pattern = re.compile(self.FIXPACK_TEMPLATE.format(version=re.escape(fix_version)), re.I)
+        fix_label = f"Fix Pack {fix_version}"
+        anchor = soup.find("strong", string=lambda s: s and fix_label in s)
 
         if not anchor:
+            print("Anchor not found for fix version:", fix_version)
             return []
 
         # 2. Extract Release Date and Table
         release_date = self._extract_release_date(anchor)
-        table = anchor.find_next("table")
+        table = anchor.find_parent("table")
         
         if not table:
+            print("No table found following the anchor for fix version:", fix_version)
             return []
 
         all_cves = set()
@@ -61,7 +64,6 @@ class IBMWebSphereTableParser(PageParser):
         for row in table.find_all("tr"):
             text = row.get_text(" ", strip=True)
             found_cves = self.CVE_REGEX.findall(text)
-            
             if found_cves:
                 all_cves.update(found_cves)
                 
@@ -77,9 +79,6 @@ class IBMWebSphereTableParser(PageParser):
                     if self.SEVERITY_RANK[current_severity] > self.SEVERITY_RANK[max_severity]:
                         max_severity = current_severity
 
-        if not all_cves:
-            return []
-
         # 4. Return the Vulnerability object
         return Vulnerability(
             cve_id=sorted(list(all_cves)),
@@ -88,6 +87,6 @@ class IBMWebSphereTableParser(PageParser):
             product=context.get("product", "IBM WebSphere Application Server"),
             product_base_version=context.get("base_version"),
             product_fix_version=fix_version,
-            source_id=fix_version,
+            source_id=[fix_version],
             published_date=normalize_date_to_iso(release_date) if release_date else None
         )

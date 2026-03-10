@@ -12,7 +12,7 @@ class ApacheTomcatParser(PageParser):
     SEVERITY_RANK = {
         "Critical": 4,
         "Important": 3,
-        "Medium": 2,
+        "Moderate": 2,
         "Low": 1,
         "Unknown": 0
     }
@@ -61,9 +61,10 @@ class ApacheTomcatParser(PageParser):
                 all_cves.update(found_cves)
 
                 # Extract Severity - use search to handle <b> tags or hidden characters
-                severity_match = re.search(r"\b(Low|Medium|Important|Critical):", text, re.I)
+                severity_match = re.search(r"\b(Low|Medium|Moderate|Important|Critical):", text, re.I)
                 if severity_match:
                     current_severity = severity_match.group(1).capitalize()
+                    print(current_severity)
                     
                     # Track max severity based on SEVERITY_RANK
                     if self.SEVERITY_RANK.get(current_severity, 0) > self.SEVERITY_RANK.get(max_severity, 0):
@@ -84,6 +85,6 @@ class ApacheTomcatParser(PageParser):
             product=context.get("product", "tomcat"),
             product_base_version=context.get("base_version"),
             product_fix_version=fix_version,
-            source_id=fix_version,
+            source_id=[fix_version],
             published_date=normalize_date_to_iso(release_date) if release_date else None
         )

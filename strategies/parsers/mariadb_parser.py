@@ -50,7 +50,7 @@ class MariaDbParser(PageParser):
                 product=context.get("sw_display_name", "MariaDB"),
                 product_base_version=context.get("base_version"),
                 product_fix_version=context.get("product_fix_version"),
-                source_id=context.get("product_fix_version"),
+                source_id=[context.get("product_fix_version")],
                 published_date=release_date if release_date else None
             )
 

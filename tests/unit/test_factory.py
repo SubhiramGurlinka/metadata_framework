@@ -44,5 +44,6 @@ def test_get_strategy_unsupported_version(mock_registry):
 
 def test_get_url_retrieval(mock_registry):
     with patch('factory.PRODUCT_REGISTRY', mock_registry):
-        url = StrategyFactory.get_url('ibm', 'mq', '9.1')
-        assert url == 'http://ibm.com/mq91'
+        strategy = StrategyFactory.get_strategy('ibm', 'mq', '9.1')
+        url = strategy.get_url('9.1')
+        assert url == "http://ibm.com/mq91"

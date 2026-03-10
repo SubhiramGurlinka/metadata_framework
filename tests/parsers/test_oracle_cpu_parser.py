@@ -126,7 +126,7 @@ def test_parse_success_non_oracle_db(mock_get_soup, mock_cvss):
     assert result.vendor == "Oracle"
     assert result.product_base_version == "19"
     assert result.product_fix_version == "19.20"
-    assert result.source_id == "cpujan2026"
+    assert result.source_id == ["cpujan2026"]
     assert result.published_date == "2026-01-15"
 
     mock_cvss.assert_called_once_with(9.8, 3.1)

@@ -20,7 +20,7 @@ def test_process_success_returns_parser_result():
         product="MongoDB",
         product_base_version="6.0",
         product_fix_version="6.0.1",
-        source_id="6.0.1",
+        source_id=["6.0.1"],
         published_date="2024-01-10"
     )
 

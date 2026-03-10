@@ -16,7 +16,7 @@ class Vulnerability(BaseModel):
     product: str
     product_base_version: str
     product_fix_version: str
-    source_id: Optional[str] = None
+    source_id: List[str]
 
     @field_validator("published_date")
     @classmethod

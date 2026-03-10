@@ -91,7 +91,7 @@ def test_process_invokes_parser_with_expected_context():
         product="MariaDB",
         product_base_version="10.6",
         product_fix_version="10.6.15",
-        source_id="10.6.15",
+        source_id=["10.6.15"],
         published_date="2024-01-15"
     )
     mock_parser.parse.return_value = expected_vulnerability

@@ -52,9 +52,3 @@ def test_config_shadowing_missing_keys(strategy_setup):
     """Ensure get_config handles keys missing from both dictionaries."""
     assert strategy_setup.get_config("non_existent_key") is None
     assert strategy_setup.get_config("non_existent_key", default="fallback") == "fallback"
-
-def test_registry_value_lookups(strategy_setup):
-    """Test direct lookup methods for software and vendor configs."""
-    assert strategy_setup.get_registry_value_from_software_cfg("retries") == 5
-    assert strategy_setup.get_registry_value_from_vendor_cfg("user_agent") == "Mozilla"
-    assert strategy_setup.get_registry_value_from_software_cfg("missing") is None

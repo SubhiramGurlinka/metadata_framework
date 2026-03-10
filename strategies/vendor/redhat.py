@@ -45,6 +45,7 @@ class RedHatVendorStrategy(VendorStrategy):
                     collected_errata.append({
                         "source_id": rhsa_id,
                         "publication_date": doc.get("portal_publication_date"),
+                        "severity": doc.get("portal_severity"),
                         "cves": self._get_cve_details(rhsa_id)
                     })
             

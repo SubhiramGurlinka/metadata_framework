@@ -153,7 +153,7 @@ class MongoDbParser(PageParser):
                 product=context.get("sw_display_name", "MongoDB"),
                 product_base_version=context.get("base_version"),
                 product_fix_version=fix_version,
-                source_id=fix_version,
+                source_id=[fix_version],
                 published_date=release_date
             )
         

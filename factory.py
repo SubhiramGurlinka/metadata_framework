@@ -5,6 +5,7 @@ from strategies.vendor.ibm import IBMVendorStrategy
 from strategies.vendor.redhat import RedHatVendorStrategy
 from strategies.vendor.oracle import OracleVendorStrategy
 from strategies.vendor.mariadb import MariaDbVendorStrategy
+from strategies.vendor.postgresql import PostgreSqlVendorStrategy
 from strategies.vendor.mongodb import MongoDbVendorStrategy
 from strategies.parsers.ibm_mq_parsers import IBMMQTableParser
 from strategies.parsers.ibm_websphere_parser import IBMWebSphereTableParser
@@ -12,6 +13,8 @@ from strategies.parsers.apache_tomcat_parser import ApacheTomcatParser
 from strategies.parsers.redhat_parser import RedHatUnifiedParser
 from strategies.parsers.oracle_cpu_parser import OracleCpuParser
 from strategies.parsers.mariadb_parser import MariaDbParser
+from strategies.parsers.ibm_db2_parser import IBMDB2FixListParser
+from strategies.parsers.postgresql_parser import PostgreSqlParser
 from strategies.parsers.mongodb_parser import MongoDbParser
 from registry import PRODUCT_REGISTRY
 
@@ -23,7 +26,9 @@ class StrategyFactory:
         "RedHatUnifiedParser": RedHatUnifiedParser,
         "Oracle_cpu_parser": OracleCpuParser,
         "Mariadb_parser": MariaDbParser,
-        "Mongodb_parser": MongoDbParser
+        "Mongodb_parser": MongoDbParser,
+        "IBM_db2_fixlist_parser": IBMDB2FixListParser,
+        "PostgreSQL_parser": PostgreSqlParser
     }
 
     _VENDORS = {
@@ -32,6 +37,7 @@ class StrategyFactory:
         "redhat": RedHatVendorStrategy,
         "oracle": OracleVendorStrategy,
         "mariadb": MariaDbVendorStrategy,
+        "postgresql": PostgreSqlVendorStrategy,
         "mongodb": MongoDbVendorStrategy
     }
 
