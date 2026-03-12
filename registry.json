@@ -99,7 +99,7 @@
           "id": "jdk-jre",
           "display_name": "Oracle Java SE",
           "parser_type": "Oracle_cpu_parser",
-          "supported_versions": ["8u", "11.0", "17.0", "21.0", "25.0"],
+          "supported_versions": ["8u", "11", "17", "21", "25"],
           "base_urls": {
             "all": "https://www.oracle.com/security-alerts/"
           }
