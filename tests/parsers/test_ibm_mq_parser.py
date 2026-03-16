@@ -1,3 +1,5 @@
+# test_ibm_mq_parser.py
+
 import pytest
 from strategies.parsers.ibm_mq_parsers import IBMMQTableParser
 from models import Vulnerability

@@ -1,4 +1,5 @@
 # strategies/vendor/redhat.py
+
 import requests
 import json
 from typing import List

@@ -1,3 +1,5 @@
+# tests/integration/test_cli_outputs.py
+
 import sys
 import json
 import pytest

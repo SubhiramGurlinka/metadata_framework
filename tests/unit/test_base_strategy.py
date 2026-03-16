@@ -1,3 +1,5 @@
+# test_base_strategy.py
+
 import pytest
 from strategies.base import VendorStrategy, PageParser
 

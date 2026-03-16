@@ -1,3 +1,5 @@
+# cvss_to_severity.py
+
 def cvss_to_severity(score: float, version: float) -> str:
     if version == 2.0:
         if score <= 3.9: return "Low"

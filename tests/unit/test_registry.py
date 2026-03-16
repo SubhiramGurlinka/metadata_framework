@@ -1,3 +1,5 @@
+# test_registry.py
+
 import pytest
 import json
 from registry import PRODUCT_REGISTRY

@@ -1,3 +1,5 @@
+# test_mariadb_parser.py
+
 import pytest
 from unittest.mock import patch
 from strategies.parsers.mariadb_parser import MariaDbParser

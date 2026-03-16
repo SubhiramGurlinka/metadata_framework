@@ -1,3 +1,5 @@
+# tests/e2e/test_vendor_end_to_end.py
+
 import sys
 import os
 import json

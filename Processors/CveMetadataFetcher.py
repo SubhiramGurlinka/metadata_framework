@@ -1,11 +1,9 @@
+# CveMetadataFetcher.py -- the processor
+
 from autopkglib import Processor, ProcessorError
 
 import os
 import sys
-
-# PROCESSOR_DIR = os.path.dirname(os.path.abspath(__file__))
-# if PROCESSOR_DIR not in sys.path:
-    # sys.path.insert(0, PROCESSOR_DIR)
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 
