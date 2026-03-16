@@ -154,7 +154,7 @@
           "id": "postgresql",
           "display_name": "PostgreSQL",
           "parser_type": "PostgreSQL_parser",
-          "supported_versions": ["16", "17"],
+          "supported_versions": ["15", "16", "17", "18"],
           "base_date_url": "https://www.postgresql.org/docs/release/",
           "base_urls": {
             "all": "https://www.postgresql.org/support/security/"
