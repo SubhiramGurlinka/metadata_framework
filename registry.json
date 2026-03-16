@@ -99,7 +99,7 @@
           "id": "jdk-jre",
           "display_name": "Oracle Java SE",
           "parser_type": "Oracle_cpu_parser",
-          "supported_versions": ["8u", "11", "17", "21", "25"],
+          "supported_versions": ["8u", "11.0", "17.0", "21.0", "25.0"],
           "base_urls": {
             "all": "https://www.oracle.com/security-alerts/"
           }
@@ -124,7 +124,7 @@
           "display_name": "MariaDB",
           "parser_type": "Mariadb_parser",
           "supported_versions": ["10.11", "11.4", "11.8"],
-          "base_date_url": "https://downloads.mariadb.org/rest-api/mariadb/",
+          "base_date_url": "https://mariadb.com/docs/release-notes/community-server/changelogs/",
           "base_urls": {
             "all": "https://mariadb.com/docs/server/security/cve/community-server.md"
           }

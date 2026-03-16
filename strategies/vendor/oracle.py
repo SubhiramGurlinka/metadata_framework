@@ -1,15 +1,11 @@
 # oracle.py
 
-from datetime import datetime
 from utils.get_soup import get_soup
+from utils.format_date import format_date
 from strategies.base import VendorStrategy
 
 
 class OracleVendorStrategy(VendorStrategy):
-
-    def format_date(self, date: str) -> str:
-        dt = datetime.strptime(date.strip(), "%Y-%B-%d")
-        return dt.strftime("%Y-%m-%d")
 
     def latest_cpu_url(self, base_url) -> tuple[str, str]:
         soup = get_soup(base_url, "html.parser")
@@ -55,7 +51,7 @@ class OracleVendorStrategy(VendorStrategy):
 
         last_row = rows[-1]
         release_date = last_row.find("td").text
-        return self.format_date(release_date)
+        return format_date(release_date)
 
     def process(self, product: str, base_version: str, fix_version: str):
         base_url = self.get_url(base_version)

@@ -7,30 +7,6 @@ from strategies.vendor.oracle import OracleVendorStrategy
 
 
 # ==========================================================
-#                   format_date()
-# ==========================================================
-
-def test_format_date_converts_valid_date_to_iso_format():
-    #  Arrange 
-    strategy = OracleVendorStrategy(parser=None, software_cfg={}, vendor_cfg={})
-
-    #  Act 
-    result = strategy.format_date("2024-January-15")
-
-    #  Assert 
-    assert result == "2024-01-15"
-
-
-def test_format_date_raises_value_error_for_invalid_format():
-    #  Arrange 
-    strategy = OracleVendorStrategy(parser=None, software_cfg={}, vendor_cfg={})
-
-    #  Act & Assert 
-    with pytest.raises(ValueError):
-        strategy.format_date("15-01-2024")
-
-
-# ==========================================================
 #                   latest_cpu_url()
 # ==========================================================
 
@@ -152,8 +128,9 @@ def test_latest_cpu_url_uses_first_link_when_multiple_exist(mock_get_soup):
 # ==========================================================
 
 # SUCCESS CASE
+@patch("strategies.vendor.oracle.format_date")
 @patch("strategies.vendor.oracle.get_soup")
-def test_get_release_date_returns_formatted_date(mock_get_soup):
+def test_get_release_date_returns_formatted_date(mock_get_soup, mock_format_date):
     #  Arrange 
     html = """
     <h3>Modification History</h3>
@@ -174,6 +151,7 @@ def test_get_release_date_returns_formatted_date(mock_get_soup):
         </tbody>
     </table>
     """
+    mock_format_date.return_value = "2026-01-15"
     mock_get_soup.return_value = BeautifulSoup(html, "html.parser")
     strategy = OracleVendorStrategy(parser=None, software_cfg={}, vendor_cfg={})
 
@@ -181,6 +159,7 @@ def test_get_release_date_returns_formatted_date(mock_get_soup):
     formatted_date = strategy.get_release_date("http://cpu-url")
 
     #  Assert 
+    mock_format_date.assert_called_once_with("2026-January-15")
     assert formatted_date == "2026-01-15"
 
 

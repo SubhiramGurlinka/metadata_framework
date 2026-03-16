@@ -4,21 +4,21 @@
             "10.11": {
                 "severity": "High",
                 "source_id": ["10.11.15"],
-                "published_date": "2025-11-07",
+                "published_date": "2025-11-06",
                 "product_fix_version": "10.11.15",
                 "cve_id": ["CVE-2026-21968","CVE-2025-13699"]
             },
             "11.4": {
                 "severity": "High",
                 "source_id": ["11.4.9"],
-                "published_date": "2025-11-07",
+                "published_date": "2025-11-06",
                 "product_fix_version": "11.4.9",
                 "cve_id": ["CVE-2026-21968","CVE-2025-13699"]
             },
             "11.8": {
                 "severity": "",
                 "source_id": ["11.8.5"],
-                "published_date": "2025-11-15",
+                "published_date": "2025-11-14",
                 "product_fix_version": "11.8.5",
                 "cve_id": []
             }
