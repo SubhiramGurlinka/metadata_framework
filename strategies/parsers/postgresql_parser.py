@@ -70,7 +70,7 @@ class PostgreSqlParser(PageParser):
 
         all_cves = set()
         max_cvss = 0.0
-        max_severity = "Unknown"
+        max_severity = ""
         cvss_scores = []
 
         # 3. Iterate through the table rows
@@ -90,11 +90,14 @@ class PostgreSqlParser(PageParser):
                         current_cvss = float(cvss_match.group(1))
                         cvss_scores.append(current_cvss)
         if not all_cves:
-            return []
+            all_cves = []
 
         # 4. Return the Vulnerability object
         max_cvss = max(cvss_scores) if cvss_scores else None
-        max_severity = cvss_to_severity(max_cvss, 3)
+        if max_cvss is not None:
+            max_severity = cvss_to_severity(float(max_cvss), 3.0)
+        else:
+            max_severity = ""
         return Vulnerability(
             cve_id=sorted(list(all_cves)),
             severity=max_severity,

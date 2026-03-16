@@ -120,7 +120,8 @@ def test_parse_table_not_found(mock_get_text):
 
     context = {
         "product_fix_version": "16.2",
-        "date_url": "http://fake-url"
+        "date_url": "http://fake-url",
+        "base_version": "16"
     }
 
     result = parser.parse(html, context)
@@ -153,12 +154,13 @@ def test_parse_no_cves(mock_get_text):
 
     context = {
         "product_fix_version": "16.2",
-        "date_url": "http://fake-url"
+        "date_url": "http://fake-url",
+        "base_version": "16"
     }
 
     result = parser.parse(html, context)
 
-    assert result == []
+    assert result.cve_id == []
 
 @patch("strategies.parsers.postgresql_parser.get_response_text")
 def test_parse_duplicate_cves(mock_get_text):
