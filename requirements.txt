@@ -1,2 +1,5 @@
 pydantic
+httpx
+respx
 pytest
+pytest-asyncio

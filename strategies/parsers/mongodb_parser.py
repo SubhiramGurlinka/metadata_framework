@@ -99,10 +99,6 @@ class MongoDbParser(PageParser):
             return None
 
     def parse(self, url, context):
-        # keeps abstract method contract intact
-        return asyncio.run(self._parse_async(url, context))
-
-    async def _parse_async(self, url, context):
         try:
             all_cves = set()
             fix_version = context.get("product_fix_version")
@@ -139,13 +135,16 @@ class MongoDbParser(PageParser):
                         all_cves.add(cve_id)
 
             severity_service = CVESeverityService()
-            severity_map = await severity_service.get_multiple_severities(all_cves)
+            severity_map = asyncio.run(
+                severity_service.get_multiple_severities(all_cves)
+            )
 
-            max_severity = ""
-            for severity in severity_map.values():
-                if severity_rank(severity) > severity_rank(max_severity):
-                    max_severity = severity
-
+            max_severity = max(
+                severity_map.values(), 
+                key=severity_rank, 
+                default=""
+            )
+            
             return Vulnerability(
                 cve_id=sorted(all_cves),
                 severity=max_severity,

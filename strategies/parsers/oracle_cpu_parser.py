@@ -33,12 +33,12 @@ class OracleCpuParser(PageParser):
             if isinstance(cpu_soup, Exception): 
                 raise RuntimeError(f"Failed to fetch CPU page: {cpu_soup}")
 
-            product_name = context["product"]
+            product_name = context.get("product")
             if not product_name:
                 raise ValueError("Context missing 'product'")
             product_name = product_name.lower()
-            base_version = str(context["base_version"])
-            release_date = context["release_date"]
+            base_version = str(context.get("base_version"))
+            release_date = context.get("release_date")
 
             if not base_version:
                 raise ValueError("Context missing 'base_version'")
@@ -109,10 +109,10 @@ class OracleCpuParser(PageParser):
                 cve_id=sorted(list(all_cves)),
                 source_id=[context.get("source_id")],
                 severity=max_severity,
-                product_base_version=context.get("base_version"),
+                product_base_version=base_version,
                 product=context.get("sw_display_name", product_name),
                 product_fix_version=context.get("product_fix_version"),
-                published_date=release_date if release_date else None
+                published_date=release_date
             )
 
         except Exception as e:

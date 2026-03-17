@@ -14,7 +14,7 @@ def format_date(date: str):
         return None
 
     try:
-        dt = parser.parse(date.strip(), fuzzy=True)
+        dt = parser.parse(date.strip())
         return dt.strftime("%Y-%m-%d")
     except (ValueError, TypeError, OverflowError):
         return None

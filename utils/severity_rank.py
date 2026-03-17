@@ -1,11 +1,12 @@
 # severity_rank.py
 
+CVSS_RANK_MAP = {
+    "Critical": 4,
+    "High": 3,
+    "Medium": 2,
+    "Low": 1,
+    "None": 0
+}
+
 def severity_rank(severity):
-    cvss_v3_1_matrix = {
-            "Critical": 4,
-            "High": 3,
-            "Medium": 2,
-            "Low": 1,
-            "None": 0
-    }
-    return cvss_v3_1_matrix.get(severity, 0)
+    return CVSS_RANK_MAP.get(severity, 0)

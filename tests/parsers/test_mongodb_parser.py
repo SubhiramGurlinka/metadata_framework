@@ -16,11 +16,11 @@ def test_format_date_invalid():
     assert parser.format_date("invalid date") is None
 
 
-@patch("strategies.parsers.mongodb_parser.severity_rank")
+# @patch("strategies.parsers.mongodb_parser.severity_rank")
 @patch("strategies.parsers.mongodb_parser.CVESeverityService")
 @patch("strategies.parsers.mongodb_parser.get_soup")
 def test_parse_extracts_cves_and_returns_vulnerability(
-    mock_get_soup, mock_severity_service, mock_severity_rank
+    mock_get_soup, mock_severity_service
 ):
     html = """
     <html>
@@ -40,18 +40,10 @@ def test_parse_extracts_cves_and_returns_vulnerability(
     mock_service_instance = mock_severity_service.return_value
     mock_service_instance.get_multiple_severities = AsyncMock(
         return_value={
-            "CVE-2026-1111": "LOW",
-            "CVE-2026-2222": "CRITICAL",
+            "CVE-2026-1111": "Low",
+            "CVE-2026-2222": "Critical",
         }
     )
-
-    mock_severity_rank.side_effect = lambda x: {
-        "None": 0,
-        "LOW": 1,
-        "MEDIUM": 2,
-        "HIGH": 3,
-        "CRITICAL": 4
-    }.get(x, 0)
 
     parser = MongoDbParser()
 
@@ -65,19 +57,65 @@ def test_parse_extracts_cves_and_returns_vulnerability(
 
     assert isinstance(result, Vulnerability)
     assert result.cve_id == ["CVE-2026-1111", "CVE-2026-2222"]
-    assert result.severity == "CRITICAL"
+    assert result.severity == "Critical"
     assert result.vendor == "MongoDB"
     assert result.product == "MongoDB"
     assert result.product_base_version == "8.0"
     assert result.product_fix_version == "8.0.19"
     assert result.published_date == "2026-02-10"
 
+# @patch("strategies.parsers.mongodb_parser.severity_rank")
+@patch("strategies.parsers.mongodb_parser.CVESeverityService")
+@patch("strategies.parsers.mongodb_parser.get_soup")
+def test_parse_extracts_cves_but_CVESeverityService_failed(
+    mock_get_soup, mock_severity_service
+):
+    html = """
+    <html>
+        <body>
+            <h3>8.0.19 - Feb 10, 2026</h3>
+            <p>
+                <a href="#">CVE-2026-1111</a>
+                <a href="#">CVE-2026-2222</a>
+            </p>
+        </body>
+    </html>
+    """
 
-@patch("strategies.parsers.mongodb_parser.severity_rank")
+    from bs4 import BeautifulSoup
+    mock_get_soup.return_value = BeautifulSoup(html, "html.parser")
+
+    mock_service_instance = mock_severity_service.return_value
+    mock_service_instance.get_multiple_severities = AsyncMock(
+        return_value={
+            "CVE-2026-1111": "",
+            "CVE-2026-2222": "",
+        }
+    )
+
+    parser = MongoDbParser()
+
+    context = {
+        "product_fix_version": "8.0.19",
+        "base_version": "8.0",
+        "sw_display_name": "MongoDB"
+    }
+
+    result = parser.parse("http://fake-url", context)
+
+    assert isinstance(result, Vulnerability)
+    assert result.cve_id == ["CVE-2026-1111", "CVE-2026-2222"]
+    assert result.severity == ""
+    assert result.vendor == "MongoDB"
+    assert result.product == "MongoDB"
+    assert result.product_base_version == "8.0"
+    assert result.product_fix_version == "8.0.19"
+    assert result.published_date == "2026-02-10"
+
 @patch("strategies.parsers.mongodb_parser.CVESeverityService")
 @patch("strategies.parsers.mongodb_parser.get_soup")
 def test_parse_without_release_date(
-    mock_get_soup, mock_severity_service, mock_severity_rank
+    mock_get_soup, mock_severity_service
 ):
     html = """
     <html>
@@ -95,13 +133,8 @@ def test_parse_without_release_date(
 
     mock_service_instance = mock_severity_service.return_value
     mock_service_instance.get_multiple_severities = AsyncMock(
-        return_value={"CVE-2024-3333": "HIGH"}
+        return_value={"CVE-2024-3333": "High"}
     )
-
-    mock_severity_rank.side_effect = lambda x: {
-        "": 0,
-        "HIGH": 3
-    }.get(x, 0)
 
     parser = MongoDbParser()
 
@@ -114,8 +147,8 @@ def test_parse_without_release_date(
     result = parser.parse("http://fake-url", context)
 
     assert isinstance(result, Vulnerability)
+    assert result.severity == "High"
     assert result.published_date is None
-
 
 @patch("strategies.parsers.mongodb_parser.CVESeverityService")
 @patch("strategies.parsers.mongodb_parser.get_soup")
@@ -164,12 +197,10 @@ def test_parse_header_not_found(mock_get_soup):
     result = parser.parse("http://fake-url", context)
     assert result is None
 
-
-@patch("strategies.parsers.mongodb_parser.severity_rank")
 @patch("strategies.parsers.mongodb_parser.CVESeverityService")
 @patch("strategies.parsers.mongodb_parser.get_soup")
-def test_parse_filters_invalid_cve(
-    mock_get_soup, mock_severity_service, mock_severity_rank
+def test_parse_filters_invalid_cve( 
+    mock_get_soup, mock_severity_service
 ):
 
     html = """
@@ -195,13 +226,8 @@ def test_parse_filters_invalid_cve(
 
     mock_service_instance = mock_severity_service.return_value
     mock_service_instance.get_multiple_severities = AsyncMock(
-        return_value={"CVE-2024-9999": "MEDIUM"}
+        return_value={"CVE-2024-9999": "Medium"}
     )
-
-    mock_severity_rank.side_effect = lambda x: {
-        "None": 0,
-        "MEDIUM": 2
-    }.get(x, 0)
 
     parser = MongoDbParser()
 
