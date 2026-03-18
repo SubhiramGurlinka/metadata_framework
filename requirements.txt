@@ -1,5 +1,6 @@
 pydantic
 httpx
+httpx[http2]
 respx
 pytest
 pytest-asyncio
