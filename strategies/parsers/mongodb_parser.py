@@ -85,7 +85,7 @@ from datetime import datetime
 from models import Vulnerability
 from strategies.base import PageParser
 from utils.get_severity import CVESeverityService
-from utils.get_soup import get_soup
+from utils.get_page import get_soup
 from utils.severity_rank import severity_rank
 from bs4 import Tag
 

@@ -3,6 +3,19 @@
   "version": "1.0",
   "test_cases": [
     {
+      "test_id": "MARIADB-10.11-10.11.16",
+      "vendor": "MariaDB",
+      "product": "MariaDB",
+      "base_version": "10.11",
+      "fix_version": "10.11.16",
+      "expected": {
+        "severity": "",
+        "published_date": "2026-02-04",
+        "source_id": ["10.11.16"],
+        "cve_id": []
+      }
+    },
+    {
       "test_id": "MARIADB-10.11-10.11.15",
       "vendor": "MariaDB",
       "product": "MariaDB",
@@ -13,6 +26,45 @@
         "published_date": "2025-11-06",
         "source_id": ["10.11.15"],
         "cve_id": ["CVE-2026-21968","CVE-2025-13699"]
+      }
+    },
+    {
+      "test_id": "MARIADB-10.11-10.11.14",
+      "vendor": "MariaDB",
+      "product": "MariaDB",
+      "base_version": "10.11",
+      "fix_version": "10.11.14",
+      "expected": {
+        "severity": "",
+        "published_date": "2025-08-06",
+        "source_id": ["10.11.14"],
+        "cve_id": []
+      }
+    },
+    {
+      "test_id": "MARIADB-10.11-10.11.13",
+      "vendor": "MariaDB",
+      "product": "MariaDB",
+      "base_version": "10.11",
+      "fix_version": "10.11.13",
+      "expected": {
+        "severity": "",
+        "published_date": "2025-05-22",
+        "source_id": ["10.11.13"],
+        "cve_id": []
+      }
+    },
+    {
+      "test_id": "MARIADB-10.11-10.11.12",
+      "vendor": "MariaDB",
+      "product": "MariaDB",
+      "base_version": "10.11",
+      "fix_version": "10.11.12",
+      "expected": {
+        "severity": "Medium",
+        "published_date": "2025-05-06",
+        "source_id": ["10.11.12"],
+        "cve_id": ["CVE-2023-52971", "CVE-2025-30722", "CVE-2025-30693", "CVE-2023-52970", "CVE-2023-52969"]
       }
     },
     {

@@ -1,119 +1,154 @@
+# test_get_severity.py
+
 import pytest
 import asyncio
-import httpx
-import respx
-from unittest.mock import AsyncMock
+from unittest.mock import patch, AsyncMock, MagicMock
 from utils.get_severity import CVESeverityService
 
-@pytest.fixture
-async def client():
-    """Shared client fixture for all tests."""
-    async with httpx.AsyncClient() as c:
-        yield c
+# -----------------------------------------------------------------------------
+# FIXTURES
+# -----------------------------------------------------------------------------
 
-@pytest.fixture(autouse=True)
-def silent_sleep(monkeypatch):
-    """Automatically mock sleep for all tests to avoid recursion and delays."""
-    mock = AsyncMock()
-    monkeypatch.setattr(asyncio, "sleep", mock)
-    return mock
+@pytest.fixture
+def severity_service():
+    """Provides a fresh instance of the CVESeverityService with a small concurrency limit."""
+    return CVESeverityService(concurrency_limit=2)
+
+@pytest.fixture
+def mock_httpx_client():
+    """Provides a mock HTTPX AsyncClient."""
+    return AsyncMock()
+
+# -----------------------------------------------------------------------------
+# TEST CASES: get_severity()
+# -----------------------------------------------------------------------------
 
 @pytest.mark.asyncio
-async def test_get_severity_full_success(respx_mock, client):
-    """Covers: status == 200, metrics found, cvssV3_1 found."""
-    service = CVESeverityService()
-    cve_id = "CVE-2026-0001"
-    
-    mock_data = {"containers": {"cna": {"metrics": [{"cvssV3_1": {"baseSeverity": "CRITICAL"}}]}}}
-    respx_mock.get(f"{service.BASE_URL}{cve_id}").mock(return_value=httpx.Response(200, json=mock_data))
+@patch("utils.get_severity.async_get_response")
+async def test_get_severity_success_flow(mock_get_response, severity_service, mock_httpx_client):
+    """
+    TARGET: get_severity (Happy Path)
+    SCENARIO: API returns 200 OK with valid CVSS v3.1 data.
+    """
+    # --- ARRANGE ---
+    mock_response = MagicMock()
+    mock_response.status_code = 200
+    mock_response.json.return_value = {
+        "containers": {
+            "cna": {
+                "metrics": [
+                    {"cvssV3_1": {"baseSeverity": "CRITICAL"}}
+                ]
+            }
+        }
+    }
+    mock_get_response.return_value = mock_response
 
-    result = await service.get_severity(client, cve_id)
+    # --- ACT ---
+    result = await severity_service.get_severity(mock_httpx_client, "CVE-2024-1234")
+
+    # --- ASSERT ---
+    mock_get_response.assert_called_once_with(mock_httpx_client, "https://cveawg.mitre.org/api/cve/CVE-2024-1234")
     assert result == "Critical"
 
-@pytest.mark.asyncio
-async def test_get_severity_v4_success(respx_mock, client):
-    """Covers: status == 200, cvssV4_0 fallback."""
-    service = CVESeverityService()
-    cve_id = "CVE-2026-0002"
-    
-    mock_data = {"containers": {"cna": {"metrics": [{"cvssV4_0": {"baseSeverity": "MEDIUM"}}]}}}
-    respx_mock.get(f"{service.BASE_URL}{cve_id}").mock(return_value=httpx.Response(200, json=mock_data))
-
-    result = await service.get_severity(client, cve_id)
-    assert result == "Medium"
 
 @pytest.mark.asyncio
-async def test_get_severity_200_but_no_metrics(respx_mock, client):
-    """Covers: status == 200, but metrics list is empty (returns None)."""
-    service = CVESeverityService()
-    cve_id = "CVE-2026-0003"
-    
-    respx_mock.get(f"{service.BASE_URL}{cve_id}").mock(return_value=httpx.Response(200, json={"containers": {"cna": {"metrics": []}}}))
+@patch("utils.get_severity.async_get_response")
+async def test_get_severity_missing_metrics_returns_none(mock_get_response, severity_service, mock_httpx_client):
+    """
+    TARGET: get_severity (Missing Data)
+    SCENARIO: API returns 200 OK, but the JSON has no metrics array.
+    """
+    # --- ARRANGE ---
+    mock_response = MagicMock()
+    mock_response.status_code = 200
+    mock_response.json.return_value = {"containers": {"cna": {}}} 
+    mock_get_response.return_value = mock_response
 
-    result = await service.get_severity(client, cve_id)
+    # --- ACT ---
+    result = await severity_service.get_severity(mock_httpx_client, "CVE-2024-1234")
+
+    # --- ASSERT ---
     assert result is None
 
-@pytest.mark.asyncio
-async def test_get_severity_retry_and_exhaustion(respx_mock, client, silent_sleep):
-    """Covers: status == 429 and the loop exhaust (returns None)."""
-    service = CVESeverityService(max_retries=2)
-    cve_id = "CVE-2026-0004"
-    
-    # Mocking 429 for all attempts
-    respx_mock.get(f"{service.BASE_URL}{cve_id}").mock(return_value=httpx.Response(429))
 
-    result = await service.get_severity(client, cve_id)
+@pytest.mark.asyncio
+@patch("utils.get_severity.async_get_response")
+async def test_get_severity_non_200_status(mock_get_response, severity_service, mock_httpx_client, capsys):
+    """
+    TARGET: get_severity (Error Path)
+    SCENARIO: API returns a 404 or 500 error, falling into the 'else' block.
+    """
+    # --- ARRANGE ---
+    mock_response = MagicMock()
+    mock_response.status_code = 404
+    mock_get_response.return_value = mock_response
+
+    # --- ACT ---
+    result = await severity_service.get_severity(mock_httpx_client, "CVE-2024-0000")
+
+    # --- ASSERT ---
     assert result is None
-    assert silent_sleep.call_count == 2 # Proves it retried exactly twice
+    captured = capsys.readouterr()
+    # Now matches your updated else block print statement
+    assert "Network Error: CVE-2024-0000" in captured.out
+
 
 @pytest.mark.asyncio
-async def test_get_severity_unhandled_status(respx_mock, client):
-    """Covers: the 'else' block (e.g., 404 Not Found)."""
-    service = CVESeverityService()
-    cve_id = "CVE-2026-404"
-    
-    respx_mock.get(f"{service.BASE_URL}{cve_id}").mock(return_value=httpx.Response(404))
+@patch("utils.get_severity.async_get_response")
+async def test_get_severity_handles_none_response(mock_get_response, severity_service, mock_httpx_client, capsys):
+    """
+    TARGET: Guard clause for None response (the bug you just fixed).
+    SCENARIO: async_get_response exhausts retries and returns None (Network timeout).
+    """
+    # --- ARRANGE ---
+    mock_get_response.return_value = None
 
-    result = await service.get_severity(client, cve_id)
+    # --- ACT ---
+    result = await severity_service.get_severity(mock_httpx_client, "CVE-2024-9999")
+
+    # --- ASSERT ---
     assert result is None
+    captured = capsys.readouterr()
+    # Verifies that a None response correctly falls into the else block without throwing an AttributeError
+    assert "Network Error: CVE-2024-9999" in captured.out
+
+
+# -----------------------------------------------------------------------------
+# TEST CASES: get_multiple_severities()
+# -----------------------------------------------------------------------------
 
 @pytest.mark.asyncio
-async def test_get_severity_network_error_retry(respx_mock, client, silent_sleep):
-    """Covers: except (httpx.TimeoutException, httpx.NetworkError)."""
-    service = CVESeverityService(max_retries=2)
-    cve_id = "CVE-2026-999"
+@patch("utils.get_severity.httpx.AsyncClient")
+async def test_get_multiple_severities_orchestration(mock_async_client_class, severity_service):
+    """
+    TARGET: get_multiple_severities
+    SCENARIO: Verifies the context manager setup and that multiple tasks are awaited and gathered.
+    """
+    # --- ARRANGE ---
+    cve_ids = ["CVE-2024-0001", "CVE-2024-0002"]
     
-    # Raise error first time, success second time
-    route = respx_mock.get(f"{service.BASE_URL}{cve_id}")
-    route.side_effect = [
-        httpx.ConnectError("Connection failed"),
-        httpx.Response(200, json={"containers": {"cna": {"metrics": [{"cvssV3_1": {"baseSeverity": "LOW"}}]}}})
-    ]
-
-    result = await service.get_severity(client, cve_id)
-    assert result == "Low"
-    assert silent_sleep.call_count == 1
-
-@pytest.mark.asyncio
-async def test_get_severity_generic_exception(respx_mock, client):
-    """Covers: the final 'except Exception' block."""
-    service = CVESeverityService()
-    cve_id = "CVE-EXCEPTION"
+    # Mock the async context manager (__aenter__ and __aexit__)
+    mock_client_instance = AsyncMock()
+    mock_async_client_class.return_value.__aenter__.return_value = mock_client_instance
     
-    # Force a non-network error (like a TypeError during processing)
-    respx_mock.get(f"{service.BASE_URL}{cve_id}").mock(side_effect=TypeError("Unexpected code crash"))
+    # Patch the instance method 'get_severity' to avoid network logic
+    async def mock_get_severity_impl(client, cve_id):
+        return "High" if cve_id == "CVE-2024-0001" else "Medium"
+    
+    severity_service.get_severity = AsyncMock(side_effect=mock_get_severity_impl)
 
-    result = await service.get_severity(client, cve_id)
-    assert result is None
+    # --- ACT ---
+    result = await severity_service.get_multiple_severities(cve_ids)
 
-@pytest.mark.asyncio
-async def test_get_multiple_severities_workflow(respx_mock):
-    """Covers: get_multiple_severities and its internal context manager."""
-    service = CVESeverityService()
-    cve_ids = ["CVE-A", "CVE-B"]
-
-    respx_mock.get(f"{service.BASE_URL}CVE-A").mock(return_value=httpx.Response(200, json={"containers": {"cna": {"metrics": [{"cvssV3_1": {"baseSeverity": "HIGH"}}]}}}))
-    respx_mock.get(f"{service.BASE_URL}CVE-B").mock(return_value=httpx.Response(200, json={"containers": {"cna": {"metrics": [{"cvssV3_1": {"baseSeverity": "LOW"}}]}}}))
-
-    results = await service.get_multiple_severities(cve_ids)
-    assert results == {"CVE-A": "High", "CVE-B": "Low"}
+    # --- ASSERT ---
+    assert result == {
+        "CVE-2024-0001": "High",
+        "CVE-2024-0002": "Medium"
+    }
+    
+    mock_async_client_class.assert_called_once()
+    call_kwargs = mock_async_client_class.call_args.kwargs
+    assert call_kwargs["http2"] is True
+    
+    assert severity_service.get_severity.call_count == 2

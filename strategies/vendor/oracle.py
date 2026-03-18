@@ -1,6 +1,6 @@
 # oracle.py
 
-from utils.get_soup import get_soup
+from utils.get_page import get_soup
 from utils.format_date import format_date
 from strategies.base import VendorStrategy
 
