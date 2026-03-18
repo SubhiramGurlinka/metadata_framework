@@ -3,7 +3,7 @@
 import re
 import asyncio
 from models import Vulnerability
-from utils.get_text import get_response_text
+from utils.get_page import get_response_text
 from utils.severity_rank import severity_rank
 from utils.get_severity import CVESeverityService
 from strategies.base import PageParser
@@ -16,9 +16,13 @@ class MariaDbParser(PageParser):
             fix_version = context.get("product_fix_version")
 
             all_cves = set()
+            max_severity = ""
             text = get_response_text(url)
+
+            # Url fetching error
             if not text:
-                raise ValueError(f"Error: 404 on {url}")
+                return 
+            
             # Regex to capture CVE ID and link
             cve_pattern = re.compile(r"\[?(CVE-\d{4}-\d+)\]?")
 
@@ -29,20 +33,18 @@ class MariaDbParser(PageParser):
                         cve_id = match.group(1)
                         all_cves.add(cve_id)
 
-            severity_service = CVESeverityService()
-            severity_map = asyncio.run(
-                severity_service.get_multiple_severities(all_cves)
-            )
+            # if no cve why search severity
+            if all_cves:
+                severity_service = CVESeverityService()
+                severity_map = asyncio.run(
+                    severity_service.get_multiple_severities(all_cves)
+                )
 
-            max_severity = max(
-                severity_map.values(), 
-                key=severity_rank, 
-                default=""
-            )
-
-            # For IVR team's comfort
-            if not all_cves:
-                max_severity = ""
+                max_severity = max(
+                    severity_map.values(), 
+                    key=severity_rank, 
+                    default=""
+                )
 
             # 4. Return the Vulnerability object
             return Vulnerability(

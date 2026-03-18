@@ -1,7 +1,7 @@
 # oracle_cpu_parser.py
 
 from models import Vulnerability
-from utils.get_soup import get_soup
+from utils.get_page import get_soup
 from utils.cvss_to_severity import cvss_to_severity
 from strategies.base import PageParser
 
