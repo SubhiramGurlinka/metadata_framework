@@ -47,7 +47,7 @@ class ApacheTomcatParser(PageParser):
                 release_date = date_match.group(0)
 
         all_cves = set()
-        max_severity = "Unknown"
+        max_severity = ""
 
         # 3. Traverse siblings - Matches your 'while name == div' logic
         next_node = header.find_next_sibling()
@@ -78,7 +78,7 @@ class ApacheTomcatParser(PageParser):
                 break
 
         if not all_cves:
-            return []
+            all_cves=[]
 
         return Vulnerability(
             cve_id=sorted(list(all_cves)),
